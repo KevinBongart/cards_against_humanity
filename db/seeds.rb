@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+[BlackCard, WhiteCard].each do |card_class|
+  path = Rails.root.join('lib', 'cards', 'base_pack', "#{card_class.color}.txt")
+  data = File.read(path)
+
+  data.each_line(chomp: true) do |line|
+    # Cards with more than one '_' aren't supported yet.
+    next if line.chars.select { |c| c == '_' }.many?
+
+    card_class.where(text: line).first_or_create!
+  end
+end

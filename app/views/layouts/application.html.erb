@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CardsAgainstHumanity</title>
+    <title>Cards Against Humanity.online</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <a class="navbar-brand" href="/">Cards Against Humanity.online</a>
+    </nav>
+
+    <main role="main">
+      <%= yield %>
+    </main>
   </body>
 </html>

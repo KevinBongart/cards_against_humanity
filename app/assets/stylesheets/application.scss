@@ -1,0 +1,61 @@
+$primary: #000;
+
+@import "bootstrap";
+
+body {
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #000; }
+
+.navbar-brand {
+  font-size: 1em;
+}
+
+.card {
+  width: 10em;
+  height: 15em;
+  font-weight: bold;
+  margin-bottom: 1em;
+
+  &.black {
+    color: #fff;
+    background-color: #000;
+  }
+
+  &.winner {
+    transform: rotate(10deg);
+    margin-left: 50%;
+    top: -2em;
+  }
+}
+
+#hand {
+  height: 18em;
+
+  .card {
+    position: absolute;
+    float: left;
+
+    .card-body {
+      position: relative;
+    }
+  }
+}
+
+#players {
+  font-size: 0.75em;
+
+  img {
+    max-width: 1em;
+    max-height: 1em;
+    vertical-align: baseline;
+  }
+}

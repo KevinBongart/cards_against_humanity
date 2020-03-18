@@ -1,0 +1,15 @@
+<h2>
+  <%= link_to 'Play this card',
+    advance_game_round_path(@game),
+    method: :post
+  %>
+</h2>
+
+<p>
+  or
+
+  <%= link_to 'skip this card',
+    skip_black_card_game_round_path(@game),
+    method: :post
+  %>
+</p>

@@ -1,0 +1,23 @@
+<%= content_tag :div,
+  id: 'game',
+  class: 'container',
+  data: { controller: :game, slug: @game.slug } do
+%>
+  <div class="row">
+    <div class="col-xs">
+      <%= render 'black_card' %>
+    </div>
+    <div class="col-xs">
+      <%= render 'player_list' %>
+    </div>
+  </div>
+
+  <%= render 'round' %>
+  <%= render 'czar_actions' if @current_player == @round.czar %>
+
+  <% if @current_player != @round.czar && !@round.ended? %>
+    <%= render 'hand' %>
+  <% end %>
+
+  <p>Invite people to this game: <%= link_to game_url(@game), game_url(@game) %></p>
+<% end %>

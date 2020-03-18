@@ -1,0 +1,28 @@
+<div id='hand'>
+  <% card_count = @current_player.cards.count %>
+  <% @current_player.cards.each_with_index do |card, i| %>
+    <%= content_tag :div,
+      class: 'card',
+      style: style(i, card_count) do
+    %>
+      <div class="card-body">
+        <%= card %>
+
+        <%= link_to '',
+          next_card_in_hand_game_round_path(@game),
+          method: :post,
+          class: "stretched-link"
+        %>
+      </div>
+
+      <% if @round.playing_black_card? && @submission.blank? %>
+        <div class="card-footer text-muted">
+          <%= link_to 'Play',
+            play_card_game_round_path(@game, card_id: card),
+            method: :post
+          %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

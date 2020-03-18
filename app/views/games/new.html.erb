@@ -1,0 +1,32 @@
+<div class="container">
+  <p>Hi <%= @current_player %>!</p>
+
+  <% if @current_player.game %>
+    <h1>
+      <%= link_to 'Click here to get back to your current game',
+        @current_player.game
+      %>
+    </h1>
+
+    or
+  <% end %>
+
+  <h1>
+    <%= link_to 'Create a new game', games_path, method: :post %>
+  </h1>
+
+  or
+
+  <%= form_with(model: Game.new, url: find_games_path) do |form| %>
+    <h1>Join an existing game:</h1>
+
+    <div class="form-group">
+      <%= form.label :slug, 'Code' %>
+      <%= form.text_field :slug, class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Join', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

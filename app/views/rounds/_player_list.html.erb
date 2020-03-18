@@ -1,0 +1,26 @@
+<div id='players' class='ml-3'>
+  <ul class='list-unstyled'>
+    <% @game.players.each do |player| %>
+      <li class="media">
+        <div class="media-body">
+          <% if player == @round.czar %>
+            <%= image_tag 'crown.png' %>
+          <% end %>
+
+          <% if player.submissions.find_by(round: @round).present? %>
+            ✔️
+          <% end %>
+
+          <span class='player-name'>
+            <%= player %>
+
+            <% if player.winning_submissions_for(@game).any? %>
+              (<%= player.winning_submissions_for(@game).count %>)
+            <% end %>
+          </span>
+
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

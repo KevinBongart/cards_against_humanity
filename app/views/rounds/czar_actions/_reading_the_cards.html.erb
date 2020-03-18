@@ -1,0 +1,26 @@
+<div id='hand'>
+  <% card_count = @submissions.count %>
+  <% @submissions.each_with_index do |submission, i| %>
+    <%= content_tag :div,
+      class: 'card',
+      style: horizontal_style(i, card_count) do
+    %>
+      <div class="card-body">
+        <%= submission.card %>
+
+        <%= link_to '',
+          next_submission_game_round_path(@game),
+          method: :post,
+          class: "stretched-link"
+        %>
+      </div>
+
+      <div class="card-footer text-muted">
+        <%= link_to 'Award',
+          advance_game_round_path(@game, submission_id: submission),
+          method: :post
+        %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

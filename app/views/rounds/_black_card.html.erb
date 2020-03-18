@@ -1,0 +1,33 @@
+<% if @current_player == @round.czar %>
+  <% if @round.starting? %>
+    <div class="card">
+      <div class="card-body">
+        Hey, you're the Card Czar this round!
+      </div>
+    </div>
+  <% elsif @round.picking_black_card? ||
+    @round.status.to_sym.in?(Round::BLACK_CARD_VISIBLE)
+  %>
+    <div class="card black">
+      <div class="card-body">
+        <%= formatted_card @round.black_card %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <% if @round.status.to_sym.in?(Round::BLACK_CARD_VISIBLE) %>
+    <div class="card black">
+      <div class="card-body">
+        <%= formatted_card @round.black_card %>
+      </div>
+    </div>
+  <% else %>
+    <div class="card">
+      <div class="card-body">
+        Please wait while Card Czar
+        <strong><%= @round.czar %></strong>
+        is picking a black card.
+      </div>
+    </div>
+  <% end %>
+<% end %>

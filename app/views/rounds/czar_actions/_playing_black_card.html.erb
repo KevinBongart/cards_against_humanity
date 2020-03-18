@@ -1,0 +1,3 @@
+<% if @round.submissions.any? %>
+  <h2><%= link_to 'Pick a winner', advance_game_round_path(@game), method: :post %></h2>
+<% end %>
