@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Round < ApplicationRecord
   include AASM
 
@@ -41,7 +43,7 @@ class Round < ApplicationRecord
     STATE_PLAYING_BLACK_CARD,
     STATE_READING_THE_CARDS,
     STATE_ENDED
-  ]
+  ].freeze
 
   after_commit :broadcast_refresh, on: :create
 

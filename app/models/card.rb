@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Card < ApplicationRecord
   scope :black,  -> { where(type: BlackCard.name) }
   scope :white,  -> { where(type: WhiteCard.name) }
-  scope :random, -> { order("RANDOM()") }
+  scope :random, -> { order('RANDOM()') }
 
   def to_s
     text

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 [BlackCard, WhiteCard].each do |card_class|
   path = Rails.root.join('lib', 'cards', 'base_pack', "#{card_class.color}.txt")
   data = File.read(path)

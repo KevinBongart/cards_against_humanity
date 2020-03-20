@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Game < ApplicationRecord
   class TooManyCardsError < StandardError; end
 
@@ -16,7 +18,7 @@ class Game < ApplicationRecord
   end
 
   def deck
-    cards.where(card_games: { used: false})
+    cards.where(card_games: { used: false })
   end
 
   def current_round
@@ -61,7 +63,7 @@ class Game < ApplicationRecord
     # Ensure no more than CARDS_PER_PLAYER cards
     if player.cards.count + count > CARDS_PER_PLAYER
       raise TooManyCardsError,
-        "#{player} already has #{player.cards.count} cards, you're adding #{count} more"
+            "#{player} already has #{player.cards.count} cards, you're adding #{count} more"
     end
 
     transaction do

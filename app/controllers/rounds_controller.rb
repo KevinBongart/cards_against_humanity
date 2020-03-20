@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoundsController < ApplicationController
   before_action :set_game
   before_action :set_round
@@ -13,9 +15,7 @@ class RoundsController < ApplicationController
       @submissions = @round.submissions.includes(:card)
     end
 
-    if @round.ended?
-      @winning_submission = @round.submissions.find_by(won: true)
-    end
+    @winning_submission = @round.submissions.find_by(won: true) if @round.ended?
   end
 
   # POST /games/1/round
@@ -100,7 +100,7 @@ class RoundsController < ApplicationController
   def set_game
     @game = Game.find_by(slug: params[:game_id])
 
-    redirect_to root_path unless @game.present?
+    redirect_to root_path if @game.blank?
   end
 
   def set_round

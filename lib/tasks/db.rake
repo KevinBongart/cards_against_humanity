@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :db do
-  desc "Deletes old games"
+  desc 'Deletes old games'
   task delete_old_games: :environment do
     expiration = 1.hour
 

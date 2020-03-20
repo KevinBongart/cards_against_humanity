@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CardsHelper
   def formatted_card(card)
     text = card.text.gsub('\n', '<br>')
@@ -8,7 +10,7 @@ module CardsHelper
 
   def style(index, card_count)
     center = 25
-    margin = center - (card_count - index) * center/card_count + center/2
+    margin = center - (card_count - index) * center / card_count + center / 2
 
     max_angle = 30
     min_angle = -45
@@ -16,13 +18,13 @@ module CardsHelper
 
     styles = {
       'margin-left' => "#{margin}%",
-      'transform'   => "rotate(#{angle}deg)"
+      'transform' => "rotate(#{angle}deg)"
     }
 
     styles.map { |k, v| "#{k}: #{v}" }.join(';')
   end
 
-  def horizontal_style(index, card_count)
+  def horizontal_style(index, _card_count)
     offset = 1
     margin = index * offset
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlayersController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
 
@@ -13,7 +15,9 @@ class PlayersController < ApplicationController
 
       # Can't redirect to a POST path
       redirect_path = session[:return_path].presence || root_path
-      redirect_path = create_after_signup_games_path if redirect_path == games_path
+      if redirect_path == games_path
+        redirect_path = create_after_signup_games_path
+      end
       redirect_to redirect_path
     else
       render :new

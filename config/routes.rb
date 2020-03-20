@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :games, only: [:new, :create, :show] do
     resource :round, only: [:show, :create] do
@@ -16,7 +18,6 @@ Rails.application.routes.draw do
       get :create_after_signup
     end
   end
-
 
   resources :players, only: [:new, :create, :destroy]
 
