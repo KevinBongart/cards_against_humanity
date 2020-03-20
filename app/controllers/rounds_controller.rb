@@ -68,8 +68,15 @@ class RoundsController < ApplicationController
   end
 
   # POST /games/1/round/next_card_in_hand
-  def next_card_in_hand
+  def prev_card_in_hand
     @current_player.card_players.last.move_to_top
+
+    redirect_to game_round_path(@game)
+  end
+
+  # POST /games/1/round/next_card_in_hand
+  def next_card_in_hand
+    @current_player.card_players.first.move_to_bottom
 
     redirect_to game_round_path(@game)
   end

@@ -52,6 +52,15 @@ a:hover {
     top: -15em;
     right: 0em;
   }
+
+  .stretched-link {
+    &.stretched-link-left::after {
+      right: 50%;
+    }
+    &.stretched-link-right::after {
+      left: 50%;
+    }
+  }
 }
 
 footer {

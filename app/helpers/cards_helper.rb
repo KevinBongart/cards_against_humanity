@@ -14,7 +14,7 @@ module CardsHelper
 
     max_angle = 30
     min_angle = -45
-    angle = min_angle + index * (max_angle * 2 / card_count)
+    angle = min_angle + index * (max_angle * 2 / card_count) + Random.rand(6) - 3
 
     styles = {
       'margin-left' => "#{margin}%",
