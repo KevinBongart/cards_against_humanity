@@ -18,9 +18,9 @@
     <% if @current_player == @game.next_czar %>
       <h2>
         <strong>
-          <%= link_to "I'm ready",
+          <%= button_to "I'm ready",
             game_round_path(@game),
-            method: :post
+            class: 'btn btn-primary btn-lg btn-block'
           %>
         </strong>
       </h2>

@@ -4,11 +4,7 @@ $primary: #000;
 
 body {
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-}
-
-.row {
-  margin-left: 0;
-  margin-right: 0;
+  max-width: 576px;
 }
 
 a:hover {
@@ -17,6 +13,11 @@ a:hover {
 
 .navbar-brand {
   font-size: 1em;
+  font-weight: bold;
+}
+
+.btn {
+  font-weight: bold;
 }
 
 .card {
@@ -31,20 +32,43 @@ a:hover {
   }
 
   &.winner {
-    transform: rotate(10deg);
-    margin-left: 50%;
-    top: -2em;
+    position: absolute;
+    transform: rotate(5deg);
+    top: -15em;
+    right: 0em;
   }
+}
+
+#game {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+#top-left {
+  .card {
+    transform: rotate(-3deg);
+  }
+}
+
+#round {
+  position: relative;
 }
 
 #hand {
   height: 18em;
+  position: relative;
 
   .card {
     position: absolute;
     float: left;
 
     .card-body {
+      position: relative;
+    }
+
+    .card-footer {
       position: relative;
     }
   }

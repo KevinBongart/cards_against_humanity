@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
     collection do
       post :find
+      get :create_after_signup
     end
   end
 
-  resources :players, only: [:new, :create]
+  resources :players, only: [:new, :create, :destroy]
 
   root 'games#new'
 end

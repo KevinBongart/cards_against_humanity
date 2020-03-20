@@ -5,7 +5,7 @@ class Round < ApplicationRecord
   belongs_to :czar, class_name: 'Player'
   belongs_to :black_card, optional: true
 
-  has_many :submissions, -> { order(:position) }
+  has_many :submissions, -> { order(:position) }, dependent: :destroy
 
   acts_as_list scope: :game
 

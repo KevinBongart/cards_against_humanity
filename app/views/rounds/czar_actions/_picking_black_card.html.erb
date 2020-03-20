@@ -1,7 +1,7 @@
 <h2>
-  <%= link_to 'Play this card',
+  <%= button_to 'Play this card.',
     advance_game_round_path(@game),
-    method: :post
+    class: 'btn btn-primary btn-lg btn-block'
   %>
 </h2>
 
@@ -11,5 +11,5 @@
   <%= link_to 'skip this card',
     skip_black_card_game_round_path(@game),
     method: :post
-  %>
+  %>.
 </p>

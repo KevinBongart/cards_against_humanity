@@ -84,7 +84,9 @@ class RoundsController < ApplicationController
   private
 
   def set_game
-    @game = Game.find_by!(slug: params[:game_id])
+    @game = Game.find_by(slug: params[:game_id])
+
+    redirect_to root_path unless @game.present?
   end
 
   def set_round

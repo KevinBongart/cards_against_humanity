@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  skip_before_action :set_current_player
+  skip_before_action :authenticate, only: [:new, :create]
 
   def new
     @player = Player.new
@@ -10,10 +10,21 @@ class PlayersController < ApplicationController
 
     if @player.save
       cookies.encrypted[:player_token] = @player.token
-      redirect_to session[:return_path].presence || root_path
+
+      # Can't redirect to a POST path
+      redirect_path = session[:return_path].presence || root_path
+      redirect_path = create_after_signup_games_path if redirect_path == games_path
+      redirect_to redirect_path
     else
       render :new
     end
+  end
+
+  def destroy
+    @current_player.destroy
+    cookies.encrypted[:player_token] = nil
+
+    redirect_to root_path
   end
 
   private

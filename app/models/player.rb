@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   belongs_to :game, optional: true
 
-  has_many :card_players, -> { order(:position) }
+  has_many :card_players, -> { order(:position) }, dependent: :destroy
   has_many :cards, through: :card_players
   has_many :submissions
 

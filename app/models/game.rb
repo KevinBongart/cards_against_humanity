@@ -5,9 +5,9 @@ class Game < ApplicationRecord
 
   has_many :players, -> { order(:position) }
 
-  has_many :card_games, -> { order(:position) }
+  has_many :card_games, -> { order(:position) }, dependent: :destroy
   has_many :cards, through: :card_games
-  has_many :rounds, -> { order(:position) }
+  has_many :rounds, -> { order(:position) }, dependent: :destroy
 
   before_create :set_slug
 

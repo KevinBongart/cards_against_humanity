@@ -15,10 +15,11 @@
         %>
       </div>
 
-      <div class="card-footer text-muted">
-        <%= link_to 'Award',
+      <div class="card-footer">
+        <%= link_to 'Award.',
           advance_game_round_path(@game, submission_id: submission),
-          method: :post
+          method: :post,
+          class: 'stretched-link'
         %>
       </div>
     <% end %>

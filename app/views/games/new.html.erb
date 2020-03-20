@@ -1,32 +1,39 @@
 <div class="container">
-  <p>Hi <%= @current_player %>!</p>
+  <% if @current_player %>
+    <p>
+      Hey <%= @current_player %>.
+    </p>
 
-  <% if @current_player.game %>
-    <h1>
-      <%= link_to 'Click here to get back to your current game',
-        @current_player.game
-      %>
-    </h1>
-
-    or
+    <% if @current_player.game %>
+      <h1>
+        <%= button_to 'Get back to your current game.',
+          @current_player.game,
+          class: 'btn btn-primary btn-lg btn-block'
+        %>
+      </h1>
+    <% end %>
   <% end %>
 
   <h1>
-    <%= link_to 'Create a new game', games_path, method: :post %>
+    <%= button_to 'Start a new game.', games_path, class: 'btn btn-primary btn-lg btn-block' %>
   </h1>
 
-  or
+  <div class="mt-3">
+    <p>Or join an existing game:</p>
 
-  <%= form_with(model: Game.new, url: find_games_path) do |form| %>
-    <h1>Join an existing game:</h1>
+    <%= form_with model: Game.new, url: find_games_path, class: 'form-inline' do |form| %>
 
-    <div class="form-group">
-      <%= form.label :slug, 'Code' %>
-      <%= form.text_field :slug, class: 'form-control' %>
-    </div>
+      <div class="form-group mb-0 mr-2">
+        <%= form.text_field :slug, class: 'form-control', placeholder: 'Game code, like ABC123' %>
+      </div>
 
-    <div class="actions">
-      <%= form.submit 'Join', class: 'btn btn-primary' %>
-    </div>
+      <%= form.submit 'Join.', class: 'btn btn-primary ' %>
+    <% end %>
+  </div>
+
+  <% if @current_player %>
+    <small>
+      <%= link_to 'Sign out', player_path(@current_player), method: :delete %>
+    </small>
   <% end %>
 </div>

@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  skip_before_action :authenticate, only: [:new]
   before_action :set_game, only: [:show]
 
   # GET /games/new
@@ -16,6 +17,7 @@ class GamesController < ApplicationController
       render :new
     end
   end
+  alias_method :create_after_signup, :create
 
   # GET /games/1
   def show
@@ -36,7 +38,9 @@ class GamesController < ApplicationController
   private
 
   def set_game
-    @game = Game.find_by!(slug: params[:id])
+    @game = Game.find_by(slug: params[:id])
+
+    redirect_to root_path unless @game.present?
   end
 
   # Only allow a list of trusted parameters through.

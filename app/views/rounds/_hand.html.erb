@@ -11,15 +11,16 @@
         <%= link_to '',
           next_card_in_hand_game_round_path(@game),
           method: :post,
-          class: "stretched-link"
+          class: 'stretched-link'
         %>
       </div>
 
       <% if @round.playing_black_card? && @submission.blank? %>
-        <div class="card-footer text-muted">
-          <%= link_to 'Play',
+        <div class="card-footer">
+          <%= link_to 'Play.',
             play_card_game_round_path(@game, card_id: card),
-            method: :post
+            method: :post,
+            class: 'stretched-link'
           %>
         </div>
       <% end %>
