@@ -9,7 +9,8 @@ body {
 
 a:hover {
   color: #fff;
-  background-color: #000; }
+  background-color: #000;
+}
 
 .navbar-brand {
   font-size: 1em;
@@ -18,6 +19,12 @@ a:hover {
 
 .btn {
   font-weight: bold;
+  transition: none;
+
+  &:hover, &:focus {
+    color: #000;
+    background-color: #fff;
+  }
 }
 
 .card {
