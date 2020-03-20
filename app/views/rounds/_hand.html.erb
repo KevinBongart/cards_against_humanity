@@ -9,9 +9,15 @@
         <%= card %>
 
         <%= link_to '',
+          prev_card_in_hand_game_round_path(@game),
+          method: :post,
+          class: 'stretched-link stretched-link-left'
+        %>
+
+        <%= link_to '',
           next_card_in_hand_game_round_path(@game),
           method: :post,
-          class: 'stretched-link'
+          class: 'stretched-link stretched-link-right'
         %>
       </div>
 

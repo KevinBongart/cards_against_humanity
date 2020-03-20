@@ -14,7 +14,9 @@ module CardsHelper
 
     max_angle = 30
     min_angle = -45
-    angle = min_angle + index * (max_angle * 2 / card_count)
+    max_random = 6
+    randomized = Random.rand(max_random) - max_random / 2
+    angle = min_angle + index * (max_angle * 2 / card_count) + randomized
 
     styles = {
       'margin-left' => "#{margin}%",
@@ -24,7 +26,7 @@ module CardsHelper
     styles.map { |k, v| "#{k}: #{v}" }.join(';')
   end
 
-  def horizontal_style(index, _card_count)
+  def horizontal_style(index)
     offset = 1
     margin = index * offset
 

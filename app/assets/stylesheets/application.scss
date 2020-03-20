@@ -5,6 +5,7 @@ $primary: #000;
 body {
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   max-width: 576px;
+  margin: auto;
 }
 
 a:hover {
@@ -51,6 +52,16 @@ a:hover {
     transform: rotate(5deg);
     top: -15em;
     right: 0em;
+  }
+
+  .stretched-link {
+    &.stretched-link-left::after {
+      right: 50%;
+    }
+
+    &.stretched-link-right::after {
+      left: 50%;
+    }
   }
 }
 
