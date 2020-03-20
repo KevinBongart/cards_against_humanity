@@ -1,6 +1,9 @@
 module CardsHelper
   def formatted_card(card)
-    simple_format card.text.gsub('\n', '<br>')
+    text = card.text.gsub('\n', '<br>')
+    text = text.split('_').join('<span class="blank">_</span>')
+
+    simple_format text
   end
 
   def style(index, card_count)

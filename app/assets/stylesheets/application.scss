@@ -37,6 +37,13 @@ a:hover {
   &.black {
     color: #fff;
     background-color: #000;
+
+    .blank {
+      width: 3em;
+      display: inline-block;
+      border-bottom: 1px solid #fff;
+      color: #000;
+    }
   }
 
   &.winner {
