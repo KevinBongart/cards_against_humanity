@@ -16,6 +16,8 @@ class RoundsController < ApplicationController
     end
 
     @winning_submission = @round.submissions.find_by(won: true) if @round.ended?
+
+    set_seed
   end
 
   # POST /games/1/round
@@ -55,6 +57,9 @@ class RoundsController < ApplicationController
       @current_player.cards -= [card]
       @current_player.submissions.where(round: @round).create!(card: card)
       @game.distribute_cards(@current_player, count: 1)
+
+      # See set_seed
+      @current_player.update!(random_seed: Random.new_seed)
     end
 
     redirect_to game_round_path(@game)
@@ -71,12 +76,18 @@ class RoundsController < ApplicationController
   def prev_card_in_hand
     @current_player.card_players.last.move_to_top
 
+    # See set_seed
+    @current_player.update!(random_seed: Random.new_seed)
+
     redirect_to game_round_path(@game)
   end
 
   # POST /games/1/round/next_card_in_hand
   def next_card_in_hand
     @current_player.card_players.first.move_to_bottom
+
+    # See set_seed
+    @current_player.update!(random_seed: Random.new_seed)
 
     redirect_to game_round_path(@game)
   end
@@ -112,6 +123,18 @@ class RoundsController < ApplicationController
 
   def set_round
     @round = @game.current_round
+  end
+
+  # Oh boy. Drawing the hand uses some randomness,
+  # but we only want this randomness to change when
+  # the player swipes cards, not when the page refreshes.
+  # This stores the seed on the player.
+  def set_seed
+    if @current_player.random_seed.blank?
+      @current_player.update!(random_seed: Random.new_seed)
+    end
+
+    Random.srand(@current_player.random_seed.to_i)
   end
 
   def authorize_player

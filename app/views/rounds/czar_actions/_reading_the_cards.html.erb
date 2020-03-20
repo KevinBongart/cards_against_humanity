@@ -3,7 +3,7 @@
   <% @submissions.each_with_index do |submission, i| %>
     <%= content_tag :div,
       class: 'card',
-      style: horizontal_style(i, card_count) do
+      style: horizontal_style(i) do
     %>
       <div class="card-body">
         <%= submission.card %>
