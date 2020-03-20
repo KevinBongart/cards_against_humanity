@@ -3,7 +3,7 @@ class Player < ApplicationRecord
 
   has_many :card_players, -> { order(:position) }, dependent: :destroy
   has_many :cards, through: :card_players
-  has_many :submissions
+  has_many :submissions, dependent: :destroy
 
   before_create :set_token
 
