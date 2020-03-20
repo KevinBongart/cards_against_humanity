@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         post :skip_black_card
         post :next_card_in_hand
         post :next_submission
+        post :end
       end
     end
 
@@ -16,7 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :players, only: [:new, :create, :destroy]
+
+  get ':id', to: 'games#show', constraints: { id: /[A-Z\d]+/ }, as: :short_game
 
   root 'games#new'
 end

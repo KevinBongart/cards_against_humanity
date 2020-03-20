@@ -2,18 +2,26 @@
   <% if @round.ended? %>
     <p>And the winner is…</p>
 
-    <div class="card winner">
-      <div class="card-body">
-        <%= formatted_card @winning_submission.card %>
+    <% if @winning_submission %>
+      <div class="card winner">
+        <div class="card-body">
+          <%= formatted_card @winning_submission.card %>
+        </div>
       </div>
-    </div>
 
-    <p>
-      Card Czar <%= @round.czar %> chose
-      <strong><%= @winning_submission.player %></strong>'s
-      tasteless card. The next Card Czar is
-      <strong><%= @game.next_czar %></strong>.
-    </p>
+      <p>
+        Card Czar <%= @round.czar %> chose
+        <strong><%= @winning_submission.player %></strong>'s
+        tasteless card. The next Card Czar is
+        <strong><%= @game.next_czar %></strong>.
+      </p>
+    <% else %>
+      <p>
+        <strong>No one.</strong>
+        The next Card Czar is
+        <strong><%= @game.next_czar %></strong>.
+      </p>
+    <% end %>
 
     <% if @current_player == @game.next_czar %>
       <h2>

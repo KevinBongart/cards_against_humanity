@@ -31,6 +31,10 @@ class Round < ApplicationRecord
     event :award_submission, after: :broadcast_refresh do
       transitions from: :reading_the_cards, to: :ended
     end
+
+    event :force_end, after: :broadcast_refresh do
+      transitions to: :ended
+    end
   end
 
   BLACK_CARD_VISIBLE = [

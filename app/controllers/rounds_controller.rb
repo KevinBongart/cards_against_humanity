@@ -14,7 +14,7 @@ class RoundsController < ApplicationController
     end
 
     if @round.ended?
-      @winning_submission = @round.submissions.find_by!(won: true)
+      @winning_submission = @round.submissions.find_by(won: true)
     end
   end
 
@@ -77,6 +77,20 @@ class RoundsController < ApplicationController
   # POST /games/1/round/next_card_in_hand
   def next_submission
     @round.submissions.last.move_to_top
+
+    redirect_to game_round_path(@game)
+  end
+
+  # POST /games/1/round/end
+  def end
+    initial_status = @round.status
+
+    if initial_status.to_sym == Round::STATE_ENDED
+      new_czar = @game.next_czar(offset: 1)
+      @round = @game.rounds.create!(czar: new_czar)
+    else
+      @round.force_end!
+    end
 
     redirect_to game_round_path(@game)
   end

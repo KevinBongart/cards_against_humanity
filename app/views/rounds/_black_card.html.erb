@@ -11,7 +11,11 @@
     %>
       <div class="card black">
         <div class="card-body">
-          <%= formatted_card @round.black_card %>
+          <% if @round.black_card %>
+            <%= formatted_card @round.black_card %>
+          <% else %>
+            ?
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -19,7 +23,11 @@
     <% if @round.status.to_sym.in?(Round::BLACK_CARD_VISIBLE) %>
       <div class="card black">
         <div class="card-body">
-          <%= formatted_card @round.black_card %>
+          <% if @round.black_card %>
+            <%= formatted_card @round.black_card %>
+          <% else %>
+            ?
+          <% end %>
         </div>
       </div>
     <% else %>

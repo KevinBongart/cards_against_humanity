@@ -19,10 +19,5 @@
     <%= render 'hand' %>
   <% end %>
 
-  <p>
-    Invite people to this game:
-    <%= link_to game_url(@game).remove('http://').remove('https://www.'),
-      game_url(@game)
-    %>
-  </p>
+  <%= render 'player_actions' %>
 <% end %>

@@ -63,8 +63,8 @@ class Game < ApplicationRecord
     end
   end
 
-  def next_czar
-    current_czar_position = current_round.czar.position
+  def next_czar(offset: 0)
+    current_czar_position = current_round.czar.position + offset
 
     if current_czar_position >= players.maximum(:position)
       players.first
