@@ -89,6 +89,10 @@ footer {
   position: relative;
 }
 
+#hand-wrapper {
+  overflow-x: hidden;
+}
+
 #hand {
   height: 18em;
   position: relative;
@@ -103,6 +107,16 @@ footer {
 
     .card-footer {
       position: relative;
+    }
+
+    &.in-deck:nth-child(3) {
+        top: 2px;
+        transform: translate(2px, 2px) rotate(0.4deg) !important;
+    }
+
+    &.in-deck:nth-child(2) {
+        top: 4px;
+        transform: translate(-4px, -2px) rotate(-1deg) !important;
     }
   }
 }
