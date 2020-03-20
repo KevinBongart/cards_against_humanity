@@ -25,7 +25,18 @@ class Game < ApplicationRecord
 
   def setup
     transaction do
-      self.cards = Card.random
+      deck = Card.random.pluck(:id).map.with_index do |card_id, i|
+        {
+          game_id: id,
+          card_id: card_id,
+          position: i,
+          created_at: Time.zone.now,
+          updated_at: Time.zone.now
+        }
+      end
+
+      CardGame.insert_all!(deck)
+
       rounds.create!(czar: players.first)
     end
 
