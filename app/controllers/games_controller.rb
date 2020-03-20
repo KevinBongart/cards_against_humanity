@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     @game = Game.new(players: [@current_player])
 
     if @game.save && @game.setup
-      redirect_to @game, notice: 'Game was successfully created.'
+      redirect_to @game
     else
       render :new
     end

@@ -46,6 +46,24 @@ a:hover {
   }
 }
 
+footer {
+  margin-top: 3em;
+
+  a {
+    color: $gray-800;
+
+    &:hover {
+      color: $black;
+      background-color: transparent;
+    }
+  }
+
+  .divider {
+    border-top: 1px solid $gray-300;
+    margin-bottom: 1em;
+  }
+}
+
 #game {
   .row {
     margin-left: 0;

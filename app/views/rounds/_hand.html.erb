@@ -17,7 +17,7 @@
 
       <% if @round.playing_black_card? && @submission.blank? %>
         <div class="card-footer">
-          <%= link_to 'Play.',
+          <%= link_to 'Play',
             play_card_game_round_path(@game, card_id: card),
             method: :post,
             class: 'stretched-link'

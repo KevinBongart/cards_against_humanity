@@ -6,7 +6,7 @@
 
     <% if @current_player.game %>
       <h1>
-        <%= button_to 'Get back to your current game.',
+        <%= button_to 'Get back to your current game',
           @current_player.game,
           class: 'btn btn-primary btn-lg btn-block'
         %>
@@ -15,7 +15,7 @@
   <% end %>
 
   <h1>
-    <%= button_to 'Start a new game.', games_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <%= button_to 'Start a new game', games_path, class: 'btn btn-primary btn-lg btn-block' %>
   </h1>
 
   <div class="mt-3">
@@ -27,7 +27,7 @@
         <%= form.text_field :slug, class: 'form-control', placeholder: 'Game code, like ABC123' %>
       </div>
 
-      <%= form.submit 'Join.', class: 'btn btn-primary ' %>
+      <%= form.submit 'Join', class: 'btn btn-primary ' %>
     <% end %>
   </div>
 
