@@ -1,0 +1,38 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.5-stretch-node
+        environment:
+          BUNDLER_VERSION: 2.0.1
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: circleci/postgres:10.5-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+      - image: redis
+    executor: ruby/default
+    steps:
+      - run:
+          name: Update Bundler
+          command: |
+            gem install bundler:$BUNDLER_VERSION
+      - checkout
+      - ruby/load-cache
+      - ruby/install-deps
+      - run:
+          name: Install Yarn dependencies
+          command: |
+            yarn install --frozen-lockfile
+      - ruby/save-cache
+      - run:
+          name: Set up database
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
+      - ruby/run-tests
