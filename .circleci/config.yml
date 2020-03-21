@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2
+  ruby: circleci/ruby@0.2.1
 
 jobs:
   build:
@@ -23,4 +23,12 @@ jobs:
           command: |
             gem install bundler:$BUNDLER_VERSION
       - checkout
-      - ruby/bundle-install
+      - ruby/load-cache
+      - ruby/install-deps
+      - ruby/save-cache
+      - run:
+          name: Set up database
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
+      - ruby/run-tests
