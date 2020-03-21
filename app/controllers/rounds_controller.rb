@@ -92,9 +92,16 @@ class RoundsController < ApplicationController
     redirect_to game_round_path(@game)
   end
 
-  # POST /games/1/round/next_card_in_hand
-  def next_submission
+  # POST /games/1/round/prev_submission
+  def prev_submission
     @round.submissions.last.move_to_top
+
+    redirect_to game_round_path(@game)
+  end
+
+  # POST /games/1/round/next_submission
+  def next_submission
+    @round.submissions.first.move_to_bottom
 
     redirect_to game_round_path(@game)
   end

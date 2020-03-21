@@ -3,27 +3,37 @@
   <% @current_player.cards.each_with_index do |card, i| %>
     <%= content_tag :div,
       class: 'card',
-      style: style(i, card_count) do
+      style: spread_hand_style(i, card_count) do
     %>
       <div class="card-body">
-        <%= card %>
+        <%= card.text %>
 
-        <%= link_to '',
-          prev_card_in_hand_game_round_path(@game),
-          method: :post,
-          class: 'stretched-link stretched-link-left'
-        %>
+        <% if card == @current_player.cards.last %>
+          <%= link_to prev_card_in_hand_game_round_path(@game),
+            method: :post,
+            class: 'stretched-link stretched-link-left' do
+          %>
+            <span class='card-arrow'>←</span>
+          <% end %>
 
-        <%= link_to '',
-          next_card_in_hand_game_round_path(@game),
-          method: :post,
-          class: 'stretched-link stretched-link-right'
-        %>
+          <%= link_to next_card_in_hand_game_round_path(@game),
+            method: :post,
+            class: 'stretched-link stretched-link-right' do
+          %>
+            <span class='card-arrow'>→</span>
+          <% end %>
+        <% else %>
+          <%= link_to '',
+            prev_card_in_hand_game_round_path(@game),
+            method: :post,
+            class: 'stretched-link'
+          %>
+        <% end %>
       </div>
 
-      <% if @round.playing_black_card? && @submission.blank? %>
+      <% if card == @current_player.cards.last && @round.playing_black_card? && @submission.blank? %>
         <div class="card-footer">
-          <%= link_to 'Play',
+          <%= link_to 'Play this card',
             play_card_game_round_path(@game, card_id: card),
             method: :post,
             class: 'stretched-link'

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         post :skip_black_card
         post :prev_card_in_hand
         post :next_card_in_hand
+        post :prev_submission
         post :next_submission
         post :end
       end

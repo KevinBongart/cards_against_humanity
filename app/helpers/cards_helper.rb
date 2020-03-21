@@ -8,7 +8,7 @@ module CardsHelper
     simple_format text
   end
 
-  def style(index, card_count)
+  def spread_hand_style(index, card_count)
     center = 25
     margin = center - (card_count - index) * center / card_count + center / 2
 
@@ -31,7 +31,7 @@ module CardsHelper
     styles.map { |k, v| "#{k}: #{v}" }.join(';')
   end
 
-  def horizontal_style(index)
+  def horizontal_hand_style(index)
     offset = 1
     margin = index * offset
 
