@@ -15,7 +15,12 @@ module CardsHelper
     max_angle = 30
     min_angle = -45
     max_random = 6
-    randomized = Random.rand(max_random) - max_random / 2
+
+    old_seed = Random.srand(@current_player.random_seed.to_i)
+    random_int = (index + 1).times.map { Random.rand(max_random) }.last
+    Random.srand(old_seed)
+
+    randomized = random_int - max_random / 2
     angle = min_angle + index * (max_angle * 2 / card_count) + randomized
 
     styles = {
