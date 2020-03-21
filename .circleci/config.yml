@@ -25,6 +25,10 @@ jobs:
       - checkout
       - ruby/load-cache
       - ruby/install-deps
+      - run:
+          name: Install Yarn dependencies
+          command: |
+            yarn install --frozen-lockfile
       - ruby/save-cache
       - run:
           name: Set up database
