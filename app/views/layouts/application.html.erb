@@ -36,6 +36,10 @@
 
         Remixed under
         <a href='https://creativecommons.org/licenses/by-nc-sa/2.0/'>Creative Commons BY-NC-SA 2.0 license</a>.
+
+        <% if @current_player %>
+          <%= link_to 'Click here to sign out', @current_player, method: :delete %>.
+        <% end %>
       </p>
     </footer>
   </body>
