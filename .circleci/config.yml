@@ -1,15 +1,26 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.1.2 
+  ruby: circleci/ruby@0.1.2
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:2.6.5-stretch-node
+        environment:
+          BUNDLER_VERSION: 2.0.1
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+      - image: circleci/postgres:10.5-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ""
+      - image: redis
     executor: ruby/default
     steps:
-      - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: Update Bundler
+          command: |
+            gem install bundler:$BUNDLER_VERSION
+      - checkout
       - ruby/bundle-install
