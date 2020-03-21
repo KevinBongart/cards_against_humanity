@@ -63,6 +63,8 @@ class RoundsController < ApplicationController
     end
 
     redirect_to game_round_path(@game)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to game_round_path(@game)
   end
 
   # POST /games/1/round/skip_black_card
