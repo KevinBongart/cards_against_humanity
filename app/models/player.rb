@@ -8,6 +8,7 @@ class Player < ApplicationRecord
   has_many :submissions, dependent: :destroy
 
   before_create :set_token
+  before_create :set_random_seed
 
   acts_as_list scope: :game
 
@@ -21,9 +22,18 @@ class Player < ApplicationRecord
     submissions.joins(:round).where(rounds: { game_id: game }).where(won: true)
   end
 
+  def reset_random_seed!
+    set_random_seed
+    save!
+  end
+
   private
 
   def set_token
     self.token = SecureRandom.base64
+  end
+
+  def set_random_seed
+    self.random_seed = Random.new_seed
   end
 end

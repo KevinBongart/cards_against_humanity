@@ -16,8 +16,6 @@ class RoundsController < ApplicationController
     end
 
     @winning_submission = @round.submissions.find_by(won: true) if @round.ended?
-
-    set_seed
   end
 
   # POST /games/1/round
@@ -125,18 +123,6 @@ class RoundsController < ApplicationController
 
   def set_round
     @round = @game.current_round
-  end
-
-  # Oh boy. Drawing the hand uses some randomness,
-  # but we only want this randomness to change when
-  # the player swipes cards, not when the page refreshes.
-  # This stores the seed on the player.
-  def set_seed
-    if @current_player.random_seed.blank?
-      @current_player.update!(random_seed: Random.new_seed)
-    end
-
-    Random.srand(@current_player.random_seed.to_i)
   end
 
   def authorize_player
