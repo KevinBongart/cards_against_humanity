@@ -9,12 +9,9 @@ class RoundsController < ApplicationController
   # GET /games/1/round
   def show
     @game.add_player(@current_player) unless @current_player.in? @game.players
+    @hand = @current_player.card_players.includes(:card)
     @submission = @current_player.submissions.find_by(round: @round)
-
-    if @round.reading_the_cards?
-      @submissions = @round.submissions.includes(:card)
-    end
-
+    @submissions = @round.submissions.includes(:card)
     @winning_submission = @round.submissions.find_by(won: true) if @round.ended?
   end
 
