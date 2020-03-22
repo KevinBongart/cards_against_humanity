@@ -3,7 +3,7 @@
 namespace :db do
   desc 'Deletes old games'
   task delete_old_games: :environment do
-    expiration = 1.hour
+    expiration = 1.day
 
     Game.find_each do |game|
       ended_at = game.rounds.last.updated_at
@@ -16,12 +16,12 @@ namespace :db do
             Rails.logger.debug "  Resetting Player##{player.id}"
 
             player.update!(game: nil)
-            player.card_players.destroy
+            player.card_players.destroy_all
           end
 
           game.destroy
 
-          Rails.logger.debug "Done deleting Game##{game.id}"
+          Rails.logger.debug "  Done deleting Game##{game.id}"
         end
       end
     end
