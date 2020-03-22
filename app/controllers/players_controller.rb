@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      cookies.encrypted[:player_token] = @player.token
+      cookies.permanent.encrypted[:player_token] = @player.token
 
       # Can't redirect to a POST path
       redirect_path = session[:return_path].presence || root_path
@@ -25,8 +25,8 @@ class PlayersController < ApplicationController
   end
 
   def destroy
+    cookies.delete(:player_token)
     @current_player.destroy
-    cookies.encrypted[:player_token] = nil
 
     redirect_to root_path
   end

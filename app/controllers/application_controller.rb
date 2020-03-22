@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate
     if @current_player.blank?
-      cookies.encrypted[:player_token] = nil
+      cookies.delete(:player_token)
       session[:return_path] = request.path
 
       redirect_to new_player_path
