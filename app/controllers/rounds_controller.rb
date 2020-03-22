@@ -55,9 +55,6 @@ class RoundsController < ApplicationController
       @current_player.cards -= [card]
       @current_player.submissions.where(round: @round).create!(card: card)
       @game.distribute_cards(@current_player, count: 1)
-
-      # See set_seed
-      @current_player.update!(random_seed: Random.new_seed)
     end
 
     redirect_to game_round_path(@game)
@@ -76,18 +73,12 @@ class RoundsController < ApplicationController
   def prev_card_in_hand
     @current_player.card_players.last.move_to_top
 
-    # See set_seed
-    @current_player.update!(random_seed: Random.new_seed)
-
     redirect_to game_round_path(@game)
   end
 
   # POST /games/1/round/next_card_in_hand
   def next_card_in_hand
     @current_player.card_players.first.move_to_bottom
-
-    # See set_seed
-    @current_player.update!(random_seed: Random.new_seed)
 
     redirect_to game_round_path(@game)
   end

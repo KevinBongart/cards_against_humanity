@@ -8,19 +8,18 @@ module CardsHelper
     simple_format text
   end
 
-  def spread_hand_style(index, card_count)
+  def spread_hand_style(card, index, card_count)
     center = 25
     margin = center - (card_count - index) * center / card_count + center / 2
 
     max_angle = 30
     min_angle = -45
+
+    # Add or remove 3 degrees to the angle
     max_random = 6
-
-    old_seed = Random.srand(@current_player.random_seed.to_i)
-    random_int = (index + 1).times.map { Random.rand(max_random) }.last
-    Random.srand(old_seed)
-
+    random_int = (card.id.digits.first + index) % (max_random + 1)
     randomized = random_int - max_random / 2
+
     angle = min_angle + index * (max_angle * 2 / card_count) + randomized
 
     styles = {

@@ -3,7 +3,7 @@
   <% @current_player.cards.each_with_index do |card, i| %>
     <%= content_tag :div,
       class: 'card',
-      style: spread_hand_style(i, card_count) do
+      style: spread_hand_style(card, i, card_count) do
     %>
       <div class="card-body">
         <%= card.text %>
