@@ -1,3 +1,48 @@
-// Place all the styles related to the Games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+#game {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+#top-left {
+  .card {
+    transform: rotate(-3deg);
+  }
+}
+
+#round {
+  position: relative;
+}
+
+#hand {
+  height: 18em;
+  position: relative;
+
+  .card {
+    position: absolute;
+    float: left;
+
+    .card-body, .card-footer {
+      position: relative;
+    }
+  }
+}
+
+#players {
+  font-size: 0.75em;
+
+  li {
+    padding: 0.2em 0;
+
+    .player-name {
+      max-width: 80px;
+    }
+  }
+
+  img {
+    max-width: 1em;
+    max-height: 1em;
+    vertical-align: baseline;
+  }
+}

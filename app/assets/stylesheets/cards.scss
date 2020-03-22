@@ -1,0 +1,72 @@
+.card {
+  width: 10em;
+  height: 15em;
+  font-weight: bold;
+  margin-bottom: 1em;
+
+  &.black {
+    color: #fff;
+    background-color: #000;
+
+    .blank {
+      width: 3em;
+      display: inline-block;
+      border-bottom: 1px solid #fff;
+      color: #000;
+    }
+  }
+
+  &.winner {
+    position: absolute;
+    transform: rotate(5deg);
+    top: -15em;
+    right: 0em;
+  }
+
+  .card-body {
+    line-height: 1.25em;
+  }
+
+  .stretched-link {
+    &.stretched-link-left {
+      &::after {
+        right: 50%;
+      }
+
+      .card-arrow {
+        left: 0;
+      }
+    }
+
+    &.stretched-link-right {
+      &::after {
+        left: 50%;
+      }
+
+      .card-arrow {
+        right: 0;
+      }
+    }
+
+    .card-arrow {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      padding: 1em 1.25em;
+      color: #000;
+    }
+
+    &:hover .card-arrow {
+      display: block;
+    }
+  }
+
+  .card-footer {
+    text-align: center;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}

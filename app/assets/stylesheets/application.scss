@@ -1,6 +1,8 @@
 $primary: #000;
 
 @import "bootstrap";
+@import "cards";
+@import "games";
 
 body {
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -29,75 +31,6 @@ a:hover {
   }
 }
 
-.card {
-  width: 10em;
-  height: 15em;
-  font-weight: bold;
-  margin-bottom: 1em;
-
-  &.black {
-    color: #fff;
-    background-color: #000;
-
-    .blank {
-      width: 3em;
-      display: inline-block;
-      border-bottom: 1px solid #fff;
-      color: #000;
-    }
-  }
-
-  &.winner {
-    position: absolute;
-    transform: rotate(5deg);
-    top: -15em;
-    right: 0em;
-  }
-
-  .stretched-link {
-    &.stretched-link-left {
-      &::after {
-        right: 50%;
-      }
-
-      .card-arrow {
-        left: 0;
-      }
-    }
-
-    &.stretched-link-right {
-      &::after {
-        left: 50%;
-      }
-
-      .card-arrow {
-        right: 0;
-      }
-    }
-
-    .card-arrow {
-      display: none;
-      position: absolute;
-      bottom: 0;
-      padding: 1em 1.25em;
-      color: #000;
-    }
-
-    &:hover .card-arrow {
-      display: block;
-    }
-  }
-
-  .card-footer {
-    text-align: center;
-
-    &:hover {
-      background-color: #000;
-      color: #fff;
-    }
-  }
-}
-
 footer {
   margin-top: 3em;
 
@@ -113,58 +46,5 @@ footer {
   .divider {
     border-top: 1px solid $gray-300;
     margin-bottom: 1em;
-  }
-}
-
-#game {
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-#top-left {
-  .card {
-    transform: rotate(-3deg);
-  }
-}
-
-#round {
-  position: relative;
-}
-
-#hand {
-  height: 18em;
-  position: relative;
-
-  .card {
-    position: absolute;
-    float: left;
-
-    .card-body {
-      position: relative;
-    }
-
-    .card-footer {
-      position: relative;
-    }
-  }
-}
-
-#players {
-  font-size: 0.75em;
-
-  li {
-    padding: 0.2em 0;
-
-    .player-name {
-      max-width: 80px;
-    }
-  }
-
-  img {
-    max-width: 1em;
-    max-height: 1em;
-    vertical-align: baseline;
   }
 }
