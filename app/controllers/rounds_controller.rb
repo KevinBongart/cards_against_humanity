@@ -99,11 +99,9 @@ class RoundsController < ApplicationController
 
   # POST /games/1/round/end
   def end
-    initial_status = @round.status
-
-    if initial_status.to_sym == Round::STATE_ENDED
+    if @round.ended?
       new_czar = @game.next_czar(offset: 1)
-      @round = @game.rounds.create!(czar: new_czar)
+      @game.rounds.create!(czar: new_czar)
     else
       @round.force_end!
     end

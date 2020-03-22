@@ -77,6 +77,9 @@ class Game < ApplicationRecord
   end
 
   def next_czar(offset: 0)
+    # If the czar signs out!
+    return players.first if current_round.czar.blank?
+
     current_czar_position = current_round.czar.position + offset
 
     if current_czar_position >= players.maximum(:position)

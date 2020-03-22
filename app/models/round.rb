@@ -4,7 +4,7 @@ class Round < ApplicationRecord
   include AASM
 
   belongs_to :game
-  belongs_to :czar, class_name: 'Player'
+  belongs_to :czar, class_name: 'Player', optional: true
   belongs_to :black_card, optional: true
 
   has_many :submissions, -> { order(:position) }, dependent: :destroy
