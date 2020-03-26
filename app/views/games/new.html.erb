@@ -6,17 +6,13 @@
   </p>
 
   <% if @current_player %>
-    <p>
-      Hey <%= @current_player %>.
-    </p>
+    <p>Hey <%= @current_player %>.</p>
 
     <% if @current_player.game %>
-      <h1>
-        <%= link_to 'Back to your game',
-          @current_player.game,
-          class: 'btn btn-primary btn-lg btn-block'
-        %>
-      </h1>
+      <%= link_to 'Back to your game',
+        @current_player.game,
+        class: 'btn btn-primary btn-lg btn-block mb-2'
+      %>
     <% end %>
   <% end %>
 
@@ -27,7 +23,7 @@
   <div class="mt-3">
     <p>Or join an existing game:</p>
 
-    <%= form_with model: Game.new, url: find_games_path, class: 'form-inline' do |form| %>
+    <%= form_with scope: :game, url: find_games_path, class: 'form-inline' do |form| %>
 
       <div class="form-group mb-0 mr-2">
         <%= form.text_field :slug, class: 'form-control', placeholder: 'Game code, like ABC123' %>
