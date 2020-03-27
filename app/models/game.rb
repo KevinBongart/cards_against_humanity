@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   has_many :players, -> { order(:position) }
 
   has_many :card_games, -> { order(:position) }, dependent: :destroy
-  has_many :cards, through: :card_games
+  has_many :used_cards, through: :card_games, source: :card
   has_many :rounds, -> { order(:position) }, dependent: :destroy
   has_many :options, dependent: :destroy
 
@@ -19,7 +19,7 @@ class Game < ApplicationRecord
   end
 
   def deck
-    cards.where(card_games: { used: false })
+    Card.random.where.not(id: used_cards)
   end
 
   def current_round
@@ -27,21 +27,7 @@ class Game < ApplicationRecord
   end
 
   def setup
-    transaction do
-      deck = Card.random.pluck(:id).map.with_index do |card_id, i|
-        {
-          game_id: id,
-          card_id: card_id,
-          position: i,
-          created_at: Time.zone.now,
-          updated_at: Time.zone.now
-        }
-      end
-
-      CardGame.insert_all!(deck)
-
-      add_player(Player.create_rando!) if rando_option?
-    end
+    add_player(Player.create_rando!) if rando_option?
 
     true
   end
@@ -57,10 +43,10 @@ class Game < ApplicationRecord
 
   def setup_player(player)
     player.cards = []
-    distribute_cards(player, count: CARDS_PER_PLAYER)
+    pick_cards(player, count: CARDS_PER_PLAYER)
   end
 
-  def distribute_cards(player, count: 1)
+  def pick_cards(player, count: 1)
     # Ensure no more than CARDS_PER_PLAYER cards
     if player.cards.count + count > CARDS_PER_PLAYER
       raise TooManyCardsError,
@@ -73,7 +59,7 @@ class Game < ApplicationRecord
       player.cards.push(new_cards)
 
       # Remove cards from the deck
-      card_games.where(card: new_cards).update(used: true)
+      used_cards.push(new_cards)
     end
   end
 

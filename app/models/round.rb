@@ -55,7 +55,7 @@ class Round < ApplicationRecord
       update!(black_card: new_black_card)
 
       # Remove card from the deck
-      game.card_games.where(card: new_black_card).update(used: true)
+      game.used_cards.push(new_black_card)
     end
   end
 
