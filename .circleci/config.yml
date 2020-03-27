@@ -7,7 +7,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
         environment:
-          BUNDLER_VERSION: 2.0.1
+          BUNDLER_VERSION: 2.1.2
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
