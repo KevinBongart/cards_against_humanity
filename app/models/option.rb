@@ -10,7 +10,7 @@ class Option < ApplicationRecord
     RANDO_CARDRISSIAN = {
       code: 'rando_cardrissian',
       name: 'Rando Cardrissian',
-      description: 'Every round, pick one random White Card from the pile and place it into play. This card belongs to an imaginary player named Rando Cardrissian, and if he wins the game, all players go home in a state of everlasting shame.'
+      description: 'An imaginary player named Rando Cardrissian joins your game, and if he wins, all players go home in a state of everlasting shame.'
     }
   ]
 

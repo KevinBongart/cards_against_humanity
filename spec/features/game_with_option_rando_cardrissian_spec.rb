@@ -12,7 +12,7 @@ describe 'Game with Rando Cardrissian option' do
 
       expect(Game.first.options.count).to eq(1)
       expect(Game.first.options.first.code).to eq(Option::RANDO_CARDRISSIAN[:code])
-      expect(Game.first.players.first.name).to eq('Rando Cardrissian')
+      expect(Game.first.players.first.name).to eq('Rando')
 
       fill_in 'How should we call you?', with: 'Batman'
       click_button "Let's go"
@@ -37,12 +37,12 @@ describe 'Game with Rando Cardrissian option' do
       refresh
 
       expect(page).to have_content("✔ Robin")
-      expect(page).to have_content("✔ Rando Cardrissian")
+      expect(page).to have_content("✔ Rando")
 
       click_button 'Pick a winner'
       click_link 'Award'
 
-      expect(page).to have_content(/Card Czar Batman chose (Robin|Rando Cardrissian)'s tasteless card./)
+      expect(page).to have_content(/Card Czar Batman chose (Robin|Rando)'s tasteless card./)
       expect(page).to have_content('The next Card Czar is Robin.')
     end
 
@@ -65,12 +65,12 @@ describe 'Game with Rando Cardrissian option' do
       refresh
 
       expect(page).to have_content("✔ Batman")
-      expect(page).to have_content("✔ Rando Cardrissian")
+      expect(page).to have_content("✔ Rando")
 
       click_button 'Pick a winner'
       click_link 'Award'
 
-      expect(page).to have_content(/Card Czar Robin chose (Batman|Rando Cardrissian)'s tasteless card./)
+      expect(page).to have_content(/Card Czar Robin chose (Batman|Rando)'s tasteless card./)
       expect(page).to have_content('The next Card Czar is Batman.')
     end
 

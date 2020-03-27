@@ -2,8 +2,6 @@ import { Controller } from "stimulus"
 import consumer from "../channels/consumer"
 
 export default class extends Controller {
-  static targets = [ "players" ]
-
   connect() {
     var game_slug = document.getElementById('game').dataset.slug
 

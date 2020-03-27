@@ -16,7 +16,7 @@ class Player < ApplicationRecord
   scope :not_rando, -> { where.not(rando: true) }
 
   def self.create_rando!
-    create!(name: Option::RANDO_CARDRISSIAN[:name], rando: true)
+    create!(name: 'Rando', rando: true)
   end
 
   def to_s
