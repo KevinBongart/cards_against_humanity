@@ -26,6 +26,8 @@ class GamesController < ApplicationController
     if @game.save && @game.setup
       redirect_to @game
     else
+      @options = Option::ALL.map { |option| Option.new(code: option[:code]) }
+
       render :new
     end
   end

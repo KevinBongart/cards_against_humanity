@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_131224) do
+ActiveRecord::Schema.define(version: 2020_03_27_164720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_131224) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "random_seed"
+    t.boolean "rando", default: false
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["token"], name: "index_players_on_token", unique: true
   end

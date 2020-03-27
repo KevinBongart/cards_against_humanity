@@ -22,7 +22,7 @@ class Round < ApplicationRecord
       transitions from: :starting, to: :picking_black_card
     end
 
-    event :play_black_card, after: :broadcast_refresh do
+    event :play_black_card, after: [:play_rando, :broadcast_refresh] do
       transitions from: :picking_black_card, to: :playing_black_card
     end
 
@@ -57,5 +57,14 @@ class Round < ApplicationRecord
       # Remove card from the deck
       game.card_games.where(card: new_black_card).update(used: true)
     end
+  end
+
+  def play_rando
+    return unless game.rando_option?
+
+    rando = game.rando
+
+    card = rando.cards.random.first
+    rando.play_card(card: card, round: self)
   end
 end
