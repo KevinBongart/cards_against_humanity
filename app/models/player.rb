@@ -13,8 +13,25 @@ class Player < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :not_rando, -> { where.not(rando: true) }
+
+  def self.create_rando!
+    create!(name: 'Rando', rando: true)
+  end
+
   def to_s
     name
+  end
+
+  def play_card(card:, round:)
+    transaction do
+      # Ensure no existing submission
+      submissions.where(round: round).destroy_all
+
+      self.cards -= [card]
+      submissions.create!(card: card, round: round)
+      round.game.distribute_cards(self)
+    end
   end
 
   def winning_submissions_for(game)

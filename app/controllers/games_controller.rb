@@ -1,28 +1,42 @@
 # frozen_string_literal: true
 
 class GamesController < ApplicationController
-  skip_before_action :authenticate, only: [:new]
+  skip_before_action :authenticate, only: [:new, :create]
   before_action :set_game, only: [:show]
 
   # GET /games/new
   def new
     @game = Game.new
+    @options = Option::ALL.map { |option| Option.new(code: option[:code]) }
   end
 
   # POST /games
   def create
-    @game = Game.new(players: [@current_player])
+    params = game_params
+    params.merge!(players: [@current_player]) if @current_player
+
+    options = params.delete(:options).select(&:present?).map do |option|
+      Option.new(code: option)
+    end
+
+    params.merge!(options: options) if options.any?
+
+    @game = Game.new(params)
 
     if @game.save && @game.setup
       redirect_to @game
     else
+      @options = Option::ALL.map { |option| Option.new(code: option[:code]) }
+
       render :new
     end
   end
-  alias create_after_signup create
 
   # GET /games/1
   def show
+    @game.add_player(@current_player) if @game.players.empty?
+    @game.rounds.create!(czar: @current_player) if @game.rounds.empty?
+
     redirect_to game_round_path(@game)
   end
 
@@ -47,6 +61,6 @@ class GamesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def game_params
-    params.require(:game).permit(:slug)
+    params.require(:game).permit(:slug, options: [])
   end
 end
