@@ -10,6 +10,7 @@ class Game < ApplicationRecord
   has_many :card_games, -> { order(:position) }, dependent: :destroy
   has_many :cards, through: :card_games
   has_many :rounds, -> { order(:position) }, dependent: :destroy
+  has_many :options, dependent: :destroy
 
   before_create :set_slug
 
@@ -38,11 +39,7 @@ class Game < ApplicationRecord
       end
 
       CardGame.insert_all!(deck)
-
-      rounds.create!(czar: players.first)
     end
-
-    setup_player(players.first)
   end
 
   def add_player(player)
@@ -80,6 +77,8 @@ class Game < ApplicationRecord
     # If the czar signs out!
     return players.first if current_round.czar.blank?
 
+    return current_round.czar if mc_czar_option?
+
     current_czar_position = current_round.czar.position + offset
 
     if current_czar_position >= players.maximum(:position)
@@ -91,6 +90,10 @@ class Game < ApplicationRecord
 
   def broadcast_refresh
     GameChannel.broadcast_to(self, event: :refresh)
+  end
+
+  def mc_czar_option?
+    options.pluck(:code).include?(Option::MC_CZAR[:code])
   end
 
   private

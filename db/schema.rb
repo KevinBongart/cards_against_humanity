@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_095604) do
+ActiveRecord::Schema.define(version: 2020_03_27_131224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2020_03_21_095604) do
     t.index ["slug"], name: "index_games_on_slug", unique: true
   end
 
+  create_table "options", force: :cascade do |t|
+    t.string "code"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_options_on_game_id"
+  end
+
   create_table "packs", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -76,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_095604) do
     t.bigint "game_id", null: false
     t.string "status"
     t.integer "position", null: false
-    t.integer "czar_id", null: false
+    t.integer "czar_id"
     t.integer "black_card_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -101,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_095604) do
   add_foreign_key "card_players", "cards"
   add_foreign_key "card_players", "players"
   add_foreign_key "cards", "packs"
+  add_foreign_key "options", "games"
   add_foreign_key "players", "games"
   add_foreign_key "rounds", "games"
   add_foreign_key "submissions", "cards"
