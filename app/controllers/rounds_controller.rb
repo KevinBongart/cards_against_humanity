@@ -44,8 +44,15 @@ class RoundsController < ApplicationController
 
   # POST /games/1/round/play_card?card_id=123
   def play_card
-    card = @current_player.cards.find(params[:card_id])
-    @current_player.play_card(card: card, round: @round)
+    Round.transaction do
+      # Ensure no existing submission
+      @current_player.submissions.where(round: @round).destroy_all
+
+      card = @current_player.cards.find(params[:card_id])
+      @current_player.cards -= [card]
+      @current_player.submissions.where(round: @round).create!(card: card)
+      @game.distribute_cards(@current_player, count: 1)
+    end
 
     redirect_to game_round_path(@game)
   rescue ActiveRecord::RecordNotFound

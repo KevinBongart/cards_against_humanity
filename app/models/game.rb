@@ -10,7 +10,6 @@ class Game < ApplicationRecord
   has_many :card_games, -> { order(:position) }, dependent: :destroy
   has_many :cards, through: :card_games
   has_many :rounds, -> { order(:position) }, dependent: :destroy
-  has_many :options, dependent: :destroy
 
   before_create :set_slug
 
@@ -40,10 +39,10 @@ class Game < ApplicationRecord
 
       CardGame.insert_all!(deck)
 
-      add_player(Player.create_rando!) if rando_option?
+      rounds.create!(czar: players.first)
     end
 
-    true
+    setup_player(players.first)
   end
 
   def add_player(player)
@@ -79,37 +78,19 @@ class Game < ApplicationRecord
 
   def next_czar(offset: 0)
     # If the czar signs out!
-    return players.not_rando.first if current_round.czar.blank?
-
-    return current_round.czar if mc_czar_option?
+    return players.first if current_round.czar.blank?
 
     current_czar_position = current_round.czar.position + offset
 
-    if current_czar_position >= players.not_rando.maximum(:position)
-      players.not_rando.first
+    if current_czar_position >= players.maximum(:position)
+      players.first
     else
-      players.not_rando.where('position > ?', current_czar_position).first
+      players.where('position > ?', current_czar_position).first
     end
   end
 
   def broadcast_refresh
     GameChannel.broadcast_to(self, event: :refresh)
-
-    true
-  end
-
-  def mc_czar_option?
-    options.pluck(:code).include?(Option::MC_CZAR[:code])
-  end
-
-  def rando_option?
-    options.pluck(:code).include?(Option::RANDO_CARDRISSIAN[:code])
-  end
-
-  def rando
-    return unless rando_option?
-
-    players.find_by!(rando: true)
   end
 
   private

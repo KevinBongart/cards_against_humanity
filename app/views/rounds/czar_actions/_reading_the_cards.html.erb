@@ -13,14 +13,14 @@
             method: :post,
             class: 'stretched-link stretched-link-left' do
           %>
-            <span class='card-arrow'>&#8592;</span>
+            <span class='card-arrow'>←</span>
           <% end %>
 
           <%= link_to next_submission_game_round_path(@game),
             method: :post,
             class: 'stretched-link stretched-link-right' do
           %>
-            <span class='card-arrow'>&#8594;</span>
+            <span class='card-arrow'>→</span>
           <% end %>
         <% else %>
           <%= link_to '',
@@ -31,15 +31,13 @@
         <% end %>
       </div>
 
-      <% if submission == @submissions.last %>
-        <div class="card-footer">
-          <%= link_to 'Award',
-            advance_game_round_path(@game, submission_id: submission),
-            method: :post,
-            class: 'stretched-link'
-          %>
-        </div>
-      <% end %>
+      <div class="card-footer">
+        <%= link_to 'Award',
+          advance_game_round_path(@game, submission_id: submission),
+          method: :post,
+          class: 'stretched-link'
+        %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -16,29 +16,9 @@
     <% end %>
   <% end %>
 
-  <%= form_with model: @game do |form| %>
-    <%= form.submit 'Start a new game',
-      class: 'btn btn-primary btn-lg btn-block'
-    %>
-
-    <div class="mt-3" data-controller="options">
-      <a href="#" data-action="click->options#toggle" data-target="options.link">
-        Click here for additional options
-      </a>
-
-      <div class="collapse mt-2" data-target="options.list">
-        <%= form.collection_check_boxes :options, @options, :code, :to_s do |option| %>
-          <div class="form-check">
-            <%= option.check_box class: 'form-check-input' %>
-            <p>
-              <strong><%= option.label class: 'form-check-label' %>:</strong>
-              <%= option.object.description %>
-            </p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <h1>
+    <%= button_to 'Start a new game', games_path, class: 'btn btn-primary btn-lg btn-block' %>
+  </h1>
 
   <div class="mt-3">
     <p>Or join an existing game:</p>

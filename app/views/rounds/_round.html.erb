@@ -12,12 +12,8 @@
       <p>
         Card Czar <%= @round.czar %> chose
         <strong><%= @winning_submission.player %></strong>'s
-        tasteless card.
-
-        <% unless @game.mc_czar_option? %>
-          The next Card Czar is
-          <strong><%= @game.next_czar %></strong>.
-        <% end %>
+        tasteless card. The next Card Czar is
+        <strong><%= @game.next_czar %></strong>.
       </p>
     <% else %>
       <p>

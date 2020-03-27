@@ -12,7 +12,13 @@ class PlayersController < ApplicationController
 
     if @player.save
       cookies.permanent.encrypted[:player_token] = @player.token
-      redirect_to session[:return_path].presence || root_path
+
+      # Can't redirect to a POST path
+      redirect_path = session[:return_path].presence || root_path
+      if redirect_path == games_path
+        redirect_path = create_after_signup_games_path
+      end
+      redirect_to redirect_path
     else
       render :new
     end
