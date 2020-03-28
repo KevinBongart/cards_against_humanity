@@ -1,7 +1,7 @@
-<% cache [@game.players, @round, @submissions] do %>
+<% cache [@players, @round, @submissions] do %>
   <div id='players'>
     <ul class="list-group list-group-flush">
-      <% @game.players.each do |player| %>
+      <% @players.each do |player| %>
         <li class="list-group-item">
           <% if player == @round.czar %>
             <%= image_tag 'crown.png' %>
