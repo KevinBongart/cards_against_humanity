@@ -31,6 +31,8 @@
 
 #players {
   font-size: 0.75em;
+  max-height: 20em;
+  overflow: scroll;
 
   li {
     padding: 0.2em 0;
