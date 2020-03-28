@@ -45,11 +45,14 @@ class RoundsController < ApplicationController
 
   # POST /games/1/round/play_card?card_id=123
   def play_card
+    Rails.logger.debug("[#{@game.slug}] #{@current_player.name} is playing Card##{params[:card_id]}")
+
     card = @current_player.cards.find(params[:card_id])
     @current_player.play_card(card: card, round: @round)
 
     redirect_to game_round_path(@game)
-  rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound => e
+    Rails.logger.debug("[#{@game.slug}] Card##{params[:card_id]} not found")
     redirect_to game_round_path(@game)
   end
 
