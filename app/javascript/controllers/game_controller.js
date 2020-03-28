@@ -8,7 +8,7 @@ export default class extends Controller {
     this.subscription = consumer.subscriptions.create({ channel: "GameChannel", slug: game_slug }, {
       received(data) {
         if (data.event == 'refresh') {
-          Turbolinks.visit(location.toString());
+          location.reload();
         }
       }
     })
