@@ -30,7 +30,7 @@ class Player < ApplicationRecord
 
       self.cards -= [card]
       submissions.create!(card: card, round: round)
-      round.game.distribute_cards(self)
+      round.game.pick_cards(self)
     end
   end
 
