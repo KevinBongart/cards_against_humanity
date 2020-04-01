@@ -8,7 +8,7 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 COPY yarn.lock /myapp/yarn.lock
 RUN gem install bundler:2.1.2
 RUN bundle install --deployment --without development test
-RUN bundle exec rake yarn:install
+RUN yarn install
 
 COPY . /myapp
 
