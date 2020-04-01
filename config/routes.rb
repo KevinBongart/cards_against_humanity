@@ -23,6 +23,11 @@ Rails.application.routes.draw do
 
   resources :players, only: [:new, :create, :destroy]
 
+  namespace :admin do
+    resource :activity, only: :show
+    root 'activity#show'
+  end
+
   get ':id', to: 'games#show', constraints: { id: /[A-Z\d]+/ }, as: :short_game
 
   root 'games#new'
