@@ -1,0 +1,29 @@
+<table class="table table-striped table-hover table-sm">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Slug</th>
+      <th scope="col">Last round</th>
+      <th scope="col text-right">Rounds</th>
+      <th scope="col text-right">Players</th>
+      <th scope="col text-right">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr class="<%= row_class(game) %>">
+        <td class="text-center"><code><%= game.slug %></code></th>
+        <td><%= time_ago_in_words game.rounds.last.updated_at %> ago</td>
+
+        <td class="text-right <%= 'font-weight-bold' if lots_of_rounds?(game) %>">
+          <%= game.rounds.size %>
+        </td>
+
+        <td class="text-right <%= 'font-weight-bold' if lots_of_players?(game) %>">
+          <%= game.max_players %>
+        </td>
+
+        <td><%= game.options.map(&:code).to_sentence %></td>
+      </tr>
+   <% end %>
+  </tbody>
+</table>

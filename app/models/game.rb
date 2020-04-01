@@ -37,6 +37,7 @@ class Game < ApplicationRecord
 
     players.push(player)
     setup_player(player)
+    update!(max_players: players.count)
 
     broadcast_refresh
   end
