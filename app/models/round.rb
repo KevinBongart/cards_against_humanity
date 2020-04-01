@@ -3,7 +3,7 @@
 class Round < ApplicationRecord
   include AASM
 
-  belongs_to :game
+  belongs_to :game, touch: true
   belongs_to :czar, class_name: 'Player', optional: true
   belongs_to :black_card, optional: true
 

@@ -2,6 +2,7 @@
   <thead>
     <tr class="text-center">
       <th scope="col">Slug</th>
+      <th scope="col">Started</th>
       <th scope="col">Last round</th>
       <th scope="col text-right">Rounds</th>
       <th scope="col text-right">Players</th>
@@ -12,6 +13,7 @@
     <% @games.each do |game| %>
       <tr class="<%= row_class(game) %>">
         <td class="text-center"><code><%= game.slug %></code></th>
+        <td><%= time_ago_in_words game.rounds.last.created_at %> ago</td>
         <td><%= time_ago_in_words game.rounds.last.updated_at %> ago</td>
 
         <td class="text-right <%= 'font-weight-bold' if lots_of_rounds?(game) %>">
