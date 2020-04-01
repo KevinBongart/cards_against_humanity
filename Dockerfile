@@ -12,4 +12,4 @@ ENV RAILS_ENV production
 EXPOSE 3000
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
