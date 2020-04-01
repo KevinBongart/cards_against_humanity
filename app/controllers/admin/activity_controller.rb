@@ -1,7 +1,8 @@
 module Admin
   class ActivityController < AdminController
+    LIMIT = 7.days
     def show
-      game_ids = Round.where('updated_at > ?', 1.day.ago).distinct.pluck(:game_id)
+      game_ids = Round.where('updated_at > ?', LIMIT.ago).distinct.pluck(:game_id)
 
       @games = Game
         .where(id: game_ids)

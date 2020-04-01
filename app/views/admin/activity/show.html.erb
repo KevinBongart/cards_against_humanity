@@ -10,11 +10,18 @@
   </thead>
   <tbody>
     <% @games.each do |game| %>
-      <tr>
+      <tr class="<%= row_class(game) %>">
         <td class="text-center"><code><%= game.slug %></code></th>
         <td><%= time_ago_in_words game.rounds.last.updated_at %> ago</td>
-        <td class="text-right"><%= game.rounds.size %></td>
-        <td class="text-right"><%= game.max_players %></td>
+
+        <td class="text-right <%= 'font-weight-bold' if lots_of_rounds?(game) %>">
+          <%= game.rounds.size %>
+        </td>
+
+        <td class="text-right <%= 'font-weight-bold' if lots_of_players?(game) %>">
+          <%= game.max_players %>
+        </td>
+
         <td><%= game.options.map(&:code).to_sentence %></td>
       </tr>
    <% end %>
