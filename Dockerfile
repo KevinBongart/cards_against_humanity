@@ -5,12 +5,10 @@ WORKDIR /myapp
 
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-COPY yarn.lock /myapp/yarn.lock
 RUN gem install bundler:2.1.2
 RUN bundle install --deployment --without development test
-RUN yarn install
-
 COPY . /myapp
+RUN yarn install
 
 ENV RAILS_ENV production
 ENV RACK_ENV production
@@ -20,7 +18,6 @@ ENV PORT 80
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-
 EXPOSE 80
 
 # Start the main process.
