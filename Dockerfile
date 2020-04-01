@@ -9,7 +9,10 @@ RUN bundle install --deployment --without development test
 COPY . /myapp
 RUN bundle exec rake yarn:install
 ENV RAILS_ENV production
-EXPOSE 3000
+ENV RACK_ENV production
+ENV PORT 80
+
+EXPOSE 80
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
