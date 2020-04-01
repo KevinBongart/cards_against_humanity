@@ -81,6 +81,6 @@ test:
 production:
   <<: *default
   host: <%= ENV.fetch('DATABASE_HOST') %>
-  username: <%= ENV.fetch('DATABASE_USER') %>
+  username: <%= ENV.fetch('DATABASE_USERNAME') %>
   password: <%= ENV.fetch('DATABASE_PASSWORD') %>
   database: cards_against_humanity_production
