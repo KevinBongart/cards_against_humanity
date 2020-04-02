@@ -8,7 +8,7 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler:2.1.2
 RUN bundle install --deployment --without development test
 COPY . /myapp
-RUN yarn install
+# RUN yarn install
 
 ARG DATABASE_HOST=${DATABASE_HOST}
 ARG DATABASE_PASSWORD=${DATABASE_PASSWORD}
@@ -17,7 +17,7 @@ ARG RACK_ENV=${RACK_ENV}
 ARG RAILS_ENV=${RAILS_ENV}
 
 RUN bundle exec rails assets:precompile
-RUN bundle exec rails db:migrate --trace
+# RUN bundle exec rails db:migrate --trace
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
