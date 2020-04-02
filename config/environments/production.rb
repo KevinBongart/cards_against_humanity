@@ -56,7 +56,7 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   config.action_controller.enable_fragment_cache_logging = true
-  config.cache_store = :memory_store
+  config.cache_store = :redis_cache_store
   config.public_file_server.headers = {
     'Cache-Control' => "public, max-age=#{2.days.to_i}"
   }
