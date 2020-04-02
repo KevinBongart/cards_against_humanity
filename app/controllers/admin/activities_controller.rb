@@ -1,5 +1,5 @@
 module Admin
-  class ActivityController < AdminController
+  class ActivitiesController < AdminController
     LIMIT = 7.days
     def show
       @games = Game

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :activity, only: :show
-    root 'activity#show'
+    root 'activities#show'
   end
 
   get ':id', to: 'games#show', constraints: { id: /[A-Z\d]+/ }, as: :short_game
