@@ -10,6 +10,9 @@ RUN bundle install --deployment --without development test
 COPY . /myapp
 RUN yarn install
 
+ENV RACK_ENV production
+ENV RAILS_ENV production
+
 RUN bundle exec rails assets:precompile
 RUN bundle exec rails db:migrate --trace
 
