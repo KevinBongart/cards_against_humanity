@@ -10,8 +10,11 @@ RUN bundle install --deployment --without development test
 COPY . /myapp
 RUN yarn install
 
-ENV RACK_ENV production
-ENV RAILS_ENV production
+ARG DATABASE_HOST=${DATABASE_HOST}
+ARG DATABASE_PASSWORD=${DATABASE_PASSWORD}
+ARG DATABASE_USERNAME=${DATABASE_USERNAME}
+ARG RACK_ENV=${RACK_ENV}
+ARG RAILS_ENV=${RAILS_ENV}
 
 RUN bundle exec rails assets:precompile
 RUN bundle exec rails db:migrate --trace
