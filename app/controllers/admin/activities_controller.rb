@@ -1,6 +1,7 @@
 module Admin
   class ActivitiesController < AdminController
-    LIMIT = 7.days
+    LIMIT = 2.days
+
     def show
       @games = Game
         .where('max_players > 1')
