@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    if @current_player.blank?
-      cookies.delete(:player_token)
-      session[:return_path] = request.path
+    return unless @current_player.blank?
 
-      redirect_to new_player_path
-    end
+    cookies.delete(:player_token)
+    session[:return_path] = request.path
+
+    redirect_to new_player_path
   end
 end

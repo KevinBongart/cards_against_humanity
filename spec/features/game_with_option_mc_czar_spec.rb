@@ -43,8 +43,8 @@ describe 'Game with MC Czar option' do
     Capybara.using_session('player_1') do
       refresh
 
-      expect(page).to have_content("✔ Robin")
-      expect(page).to have_content("✔ Alfred")
+      expect(page).to have_content('✔ Robin')
+      expect(page).to have_content('✔ Alfred')
 
       click_button 'Pick a winner'
       click_link 'Award'
@@ -54,7 +54,7 @@ describe 'Game with MC Czar option' do
 
       # Batman is still the Card Czar
       click_button "I'm ready"
-      click_button "Pick a black card"
+      click_button 'Pick a black card'
       click_button 'Play this card'
     end
 
@@ -78,7 +78,7 @@ describe 'Game with MC Czar option' do
 
       # Batman is still the Card Czar
       click_button "I'm ready"
-      click_button "Pick a black card"
+      click_button 'Pick a black card'
       click_button 'Play this card'
     end
   end

@@ -18,7 +18,7 @@ class Seeds
   private
 
   def import_packs
-    packs.each do |key, pack_data|
+    packs.each do |_key, pack_data|
       # Only import official cards
       next unless pack_data['official']
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMaxPlayersToGame < ActiveRecord::Migration[6.0]
   def up
     add_column :games, :max_players, :integer, default: 0, null: false
