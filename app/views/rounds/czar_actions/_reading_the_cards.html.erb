@@ -1,5 +1,4 @@
 <div id='hand'>
-  <% card_count = @submissions.count %>
   <% @submissions.each_with_index do |submission, i| %>
     <%= content_tag :div,
       class: 'card',

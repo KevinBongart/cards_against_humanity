@@ -15,10 +15,9 @@
             <%= player %>
           </span>
 
-          <% winning_submissions = player.winning_submissions_for(@game).count %>
-          <% if winning_submissions > 0 %>
+          <% if @scores[player.id] > 0 %>
             <span class="badge badge-light badge-pill float-right">
-              <%= winning_submissions %>
+              <%= @scores[player.id] %>
             </span>
           <% end %>
         </li>

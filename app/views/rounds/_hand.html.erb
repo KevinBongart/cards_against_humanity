@@ -1,6 +1,6 @@
 <% cache [@hand, @round, @submission] do %>
   <div id='hand'>
-    <% card_count = @hand.count %>
+    <% card_count = @hand.length %>
 
     <% @hand.each_with_index do |card_player, i| %>
       <% card = card_player.card %>

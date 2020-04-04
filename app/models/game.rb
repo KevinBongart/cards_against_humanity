@@ -10,6 +10,7 @@ class Game < ApplicationRecord
   has_many :card_games, dependent: :destroy
   has_many :used_cards, through: :card_games, source: :card
   has_many :rounds, -> { order(:position) }, dependent: :destroy
+  has_many :submissions, through: :rounds
   has_many :options, dependent: :destroy
 
   before_create :set_slug
@@ -97,6 +98,16 @@ class Game < ApplicationRecord
     return unless rando_option?
 
     players.find_by!(rando: true)
+  end
+
+  # Returns a hash of player_id to winning submission count
+  # { 123 => 2, 456 => 1 }
+  def scores
+    @scores ||= begin
+      scores = submissions.winning.reorder(:player_id).group(:player_id).count
+      scores.default = 0
+      scores
+    end
   end
 
   private

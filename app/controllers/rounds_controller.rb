@@ -8,12 +8,19 @@ class RoundsController < ApplicationController
 
   # GET /games/1/round
   def show
-    @game.add_player(@current_player) unless @current_player.in? @game.players
     @players = @game.players
+
+    unless @players.to_a.include?(@current_player)
+      @game.add_player(@current_player)
+      @players = @game.players
+    end
+
     @hand = @current_player.card_players.includes(:card)
     @submission = @current_player.submissions.find_by(round: @round)
     @submissions = @round.submissions.includes(:card)
-    @winning_submission = @round.submissions.find_by(won: true) if @round.ended?
+    @scores = @game.scores
+
+    @winning_submission = @round.submissions.winning.first if @round.ended?
   end
 
   # POST /games/1/round
@@ -45,8 +52,6 @@ class RoundsController < ApplicationController
 
   # POST /games/1/round/play_card?card_id=123
   def play_card
-    Rails.logger.debug("[#{@game.slug}] #{@current_player.name} is playing Card##{params[:card_id]}")
-
     card = @current_player.cards.find(params[:card_id])
     @current_player.play_card(card: card, round: @round)
 

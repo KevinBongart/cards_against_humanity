@@ -34,10 +34,6 @@ class Player < ApplicationRecord
     end
   end
 
-  def winning_submissions_for(game)
-    submissions.joins(:round).where(rounds: { game_id: game }).where(won: true)
-  end
-
   private
 
   def set_token
