@@ -3,12 +3,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby File.read('.ruby-version').chomp
 
 gem 'aasm'
 gem 'acts_as_list'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap'
+gem 'flipper'
+gem 'flipper-redis'
+gem 'flipper-ui'
 gem 'jbuilder', '~> 2.7'
 gem 'newrelic_rpm'
 gem 'okcomputer'
@@ -20,6 +23,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'redis'
 gem 'rollbar'
 gem 'sass-rails', '>= 6'
+gem 'sidekiq'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
