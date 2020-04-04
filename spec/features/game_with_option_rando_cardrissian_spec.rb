@@ -36,8 +36,8 @@ describe 'Game with Rando Cardrissian option' do
     Capybara.using_session('player_1') do
       refresh
 
-      expect(page).to have_content("✔ Robin")
-      expect(page).to have_content("✔ Rando")
+      expect(page).to have_content('✔ Robin')
+      expect(page).to have_content('✔ Rando')
 
       click_button 'Pick a winner'
       click_link 'Award'
@@ -52,7 +52,7 @@ describe 'Game with Rando Cardrissian option' do
       refresh
 
       click_button "I'm ready"
-      click_button "Pick a black card"
+      click_button 'Pick a black card'
       click_button 'Play this card'
     end
 
@@ -64,8 +64,8 @@ describe 'Game with Rando Cardrissian option' do
     Capybara.using_session('player_2') do
       refresh
 
-      expect(page).to have_content("✔ Batman")
-      expect(page).to have_content("✔ Rando")
+      expect(page).to have_content('✔ Batman')
+      expect(page).to have_content('✔ Rando')
 
       click_button 'Pick a winner'
       click_link 'Award'
@@ -78,7 +78,7 @@ describe 'Game with Rando Cardrissian option' do
       refresh
 
       click_button "I'm ready"
-      click_button "Pick a black card"
+      click_button 'Pick a black card'
       click_button 'Play this card'
     end
   end

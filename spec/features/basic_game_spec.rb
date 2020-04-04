@@ -50,8 +50,8 @@ describe 'Basic game' do
       Capybara.using_session('player_1') do
         refresh
 
-        expect(page).to have_content("✔ Robin")
-        expect(page).to have_content("✔ Alfred")
+        expect(page).to have_content('✔ Robin')
+        expect(page).to have_content('✔ Alfred')
 
         click_button 'Pick a winner'
         click_link '→'
@@ -68,8 +68,8 @@ describe 'Basic game' do
         refresh
 
         click_button "I'm ready"
-        click_button "Pick a black card"
-        click_link "skip this card" # Robin is the worst, so of course he skips cards
+        click_button 'Pick a black card'
+        click_link 'skip this card' # Robin is the worst, so of course he skips cards
         click_button 'Play this card'
       end
 
@@ -99,7 +99,7 @@ describe 'Basic game' do
         refresh
 
         click_button "I'm ready"
-        click_button "Pick a black card"
+        click_button 'Pick a black card'
         click_button 'Play this card'
       end
 
@@ -129,7 +129,7 @@ describe 'Basic game' do
         refresh
 
         click_button "I'm ready"
-        click_button "Pick a black card"
+        click_button 'Pick a black card'
         click_button 'Play this card'
       end
     end

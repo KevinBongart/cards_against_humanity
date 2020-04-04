@@ -56,7 +56,7 @@ class RoundsController < ApplicationController
     @current_player.play_card(card: card, round: @round)
 
     redirect_to game_round_path(@game)
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ActiveRecord::RecordNotFound
     Rails.logger.debug("[#{@game.slug}] Card##{params[:card_id]} not found")
     redirect_to game_round_path(@game)
   end
