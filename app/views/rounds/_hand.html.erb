@@ -1,49 +1,7 @@
-<% cache [@hand, @round, @submission] do %>
-  <div id='hand'>
-    <% card_count = @hand.length %>
-
-    <% @hand.each_with_index do |card_player, i| %>
-      <% card = card_player.card %>
-      <%= content_tag :div,
-        class: 'card',
-        style: spread_hand_style(card, i, card_count) do
-      %>
-        <div class="card-body">
-          <%= card.text %>
-
-          <% if card_player == @hand.last %>
-            <%= link_to prev_card_in_hand_game_round_path(@game),
-              method: :post,
-              class: 'stretched-link stretched-link-left' do
-            %>
-              <span class='card-arrow'>&#8592;</span>
-            <% end %>
-
-            <%= link_to next_card_in_hand_game_round_path(@game),
-              method: :post,
-              class: 'stretched-link stretched-link-right' do
-            %>
-              <span class='card-arrow'>&#8594;</span>
-            <% end %>
-          <% else %>
-            <%= link_to '',
-              prev_card_in_hand_game_round_path(@game),
-              method: :post,
-              class: 'stretched-link'
-            %>
-          <% end %>
-        </div>
-
-        <% if card_player == @hand.last && @round.playing_black_card? && @submission.blank? %>
-          <div class="card-footer">
-            <%= link_to 'Play this card',
-              play_card_game_round_path(@game, card_id: card),
-              method: :post,
-              class: 'stretched-link'
-            %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+<% cache [@current_player, @hand, @round, @submission] do %>
+  <% if @current_player.expand_hand? %>
+    <%= render 'hand_expanded' %>
+  <% else %>
+    <%= render 'hand_collapsed' %>
+  <% end %>
 <% end %>

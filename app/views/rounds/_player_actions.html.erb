@@ -4,6 +4,19 @@
     <%= short_game_url(@game).remove('http://').remove('https://www.') %>
   <% end %>
 
+  <% if @current_player != @round.czar && !@round.ended? %>
+    <%= link_to toggle_hand_style_player_path(@current_player),
+      method: :post,
+      class: 'list-group-item list-group-item-action' do
+    %>
+      <% if @current_player.expand_hand? %>
+        Collapse cards
+      <% else %>
+        See all your cards
+      <% end %>
+    <% end %>
+  <% end %>
+
   <%= link_to 'End this round without a winner',
     end_game_round_path(@game),
     method: :post,

@@ -25,6 +25,12 @@ class PlayersController < ApplicationController
     redirect_to root_path
   end
 
+  def toggle_hand_style
+    @current_player.toggle!(:expand_hand)
+
+    redirect_to game_round_path(@current_player.game)
+  end
+
   private
 
   def player_params
