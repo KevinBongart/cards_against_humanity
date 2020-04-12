@@ -37,7 +37,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :players, only: [:new, :create, :destroy]
+  resources :players, only: [:new, :create, :destroy] do
+    member do
+      post :toggle_hand_style
+    end
+  end
 
   namespace :admin do
     resource :activity, only: :show

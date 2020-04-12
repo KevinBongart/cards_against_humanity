@@ -16,15 +16,24 @@
 }
 
 #hand {
-  height: 18em;
-  position: relative;
+  &.hand-collapsed {
+    height: 18em;
+    position: relative;
 
-  .card {
-    position: absolute;
-    float: left;
+    .card {
+      position: absolute;
+      float: left;
 
-    .card-body, .card-footer {
-      position: relative;
+      .card-body {
+        position: relative;
+      }
+    }
+  }
+
+  &.hand-expanded {
+    .card {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }

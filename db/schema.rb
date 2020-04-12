@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_121748) do
+ActiveRecord::Schema.define(version: 2020_04_12_172021) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "card_games", force: :cascade do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_121748) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "random_seed"
     t.boolean "rando", default: false
+    t.boolean "expand_hand", default: false
     t.index ["game_id"], name: "index_players_on_game_id"
     t.index ["token"], name: "index_players_on_token", unique: true
   end
