@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount PgHero::Engine, at: :pghero
+
   resources :games, only: [:new, :create, :show] do
     resource :round, only: [:show, :create] do
       member do
