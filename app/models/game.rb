@@ -82,15 +82,7 @@ class Game < ApplicationRecord
 
   def broadcast_refresh
     data = { event: :refresh }
-
-    # Experimenting with asynchronous broadcasting
-    if Flipper.enabled?(:async_broadcast)
-      BroadcastWorker.perform_async(id, data)
-    else
-      GameChannel.broadcast_to(self, data)
-    end
-
-    true
+    BroadcastWorker.perform_async(id, data)
   end
 
   def mc_czar_option?
