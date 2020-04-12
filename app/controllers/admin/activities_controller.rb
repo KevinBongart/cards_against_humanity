@@ -2,9 +2,16 @@
 
 module Admin
   class ActivitiesController < AdminController
-    LIMIT = 2.days
+    LIMIT = 1.day
 
     def show
+      @current_games = Game
+        .where('max_players > 1')
+        .where('updated_at > ?', 5.minutes.ago)
+        .order(updated_at: :desc)
+        .includes(:rounds, :options)
+        .select { |game| game.rounds.many? }
+
       @games = Game
         .where('max_players > 1')
         .where('updated_at > ?', LIMIT.ago)
