@@ -1,0 +1,2 @@
+---
+:concurrency: <%= ENV.fetch('SIDEKIQ_CONCURRENCY', 10) %>
