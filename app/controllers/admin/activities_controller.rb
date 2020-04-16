@@ -18,6 +18,9 @@ module Admin
         .order(updated_at: :desc)
         .includes(:rounds, :options)
         .select { |game| game.rounds.many? }
+
+      @all_games = Game.where('max_players > 1')
+      @all_rounds = Round.joins(:game).merge(@all_games)
     end
   end
 end

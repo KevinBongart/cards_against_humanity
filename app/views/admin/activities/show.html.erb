@@ -20,6 +20,12 @@
       <td class="text-right"><%= @games.sum { |g| g.rounds.length } %></td>
       <td class="text-right"><%= @games.sum(&:max_players) %></td>
     </tr>
+    <tr>
+      <td>All times:</td>
+      <td class="text-right"><%= @all_games.count %></td>
+      <td class="text-right"><%= @all_rounds.count %></td>
+      <td class="text-right"><%= @all_games.sum(&:max_players) %></td>
+    </tr>
   </tbody>
 </table>
 
