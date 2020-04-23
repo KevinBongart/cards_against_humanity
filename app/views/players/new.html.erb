@@ -1,5 +1,36 @@
-<div class="container">
-  <%= form_with(model: @player) do |form| %>
+<header>
+  <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">Cards Against Humanity</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav nav  ml-auto">
+
+
+      </ul>
+
+    </div>
+      </div>
+  </nav>
+</header>
+
+    <main role="main">
+      <div class="tab-content p-0" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">          
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-4">
+            <h2>We need your name</h2>
+  <p>
+    Please provide your name in the form below
+  </p>
+          </div>
+          <div class="col-md-12">
+              <%= form_with(model: @player) do |form| %>
     <% if @player.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@player.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -21,4 +52,48 @@
       <%= form.submit "Let's go", class: 'btn btn-primary' %>
     </div>
   <% end %>
+          </div>
+
+          
+
+
+
+ 
 </div>
+    
+
+</div>
+          </div>
+        </div>
+</div>
+    </main>
+
+    <footer class="container small text-muted text-center">
+
+        
+      <p>All creds to <a href="https://github.com/KevinBongart/">Kevin Bongart</a> and the crew behind cards against humanity.</p>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
