@@ -8,6 +8,11 @@ Put together by [Kevin Bongart](http://kevinbongart.net) so he could play his be
 
 The cards were imported from [json-against-humanity](https://github.com/crhallberg/json-against-humanity).
 
+---
+Ive just added some love and logic
+----
+
+
 ## Development setup
 
 This is a Ruby on Rails application that requires Ruby, PostgreSQL and Redis.
