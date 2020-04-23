@@ -1,6 +1,7 @@
-<h2>
-  <%= button_to 'Pick a black card',
+<h2>You are the Czar of this round</h2>
+<p>Click below to move to the black card selection</p>
+
+  <%= button_to 'Get started',
     advance_game_round_path(@game),
     class: 'btn btn-primary btn-lg btn-block'
   %>
-</h2>

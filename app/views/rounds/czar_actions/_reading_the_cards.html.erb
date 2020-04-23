@@ -1,36 +1,14 @@
 <div id='hand' class='hand-collapsed'>
   <% @submissions.each_with_index do |submission, i| %>
     <%= content_tag :div,
-      class: 'card',
-      style: horizontal_hand_style(i) do
+      class: 'card' do
     %>
       <div class="card-body">
         <%= submission.card.text %>
 
-        <% if submission == @submissions.last %>
-          <%= link_to prev_submission_game_round_path(@game),
-            method: :post,
-            class: 'stretched-link stretched-link-left' do
-          %>
-            <span class='card-arrow'>&#8592;</span>
-          <% end %>
-
-          <%= link_to next_submission_game_round_path(@game),
-            method: :post,
-            class: 'stretched-link stretched-link-right' do
-          %>
-            <span class='card-arrow'>&#8594;</span>
-          <% end %>
-        <% else %>
-          <%= link_to '',
-            prev_submission_game_round_path(@game),
-            method: :post,
-            class: 'stretched-link'
-          %>
-        <% end %>
+        
       </div>
 
-      <% if submission == @submissions.last %>
         <div class="card-footer">
           <%= link_to 'Award',
             advance_game_round_path(@game, submission_id: submission),
@@ -38,7 +16,6 @@
             class: 'stretched-link'
           %>
         </div>
-      <% end %>
     <% end %>
   <% end %>
 </div>
