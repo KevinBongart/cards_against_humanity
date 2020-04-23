@@ -27,10 +27,20 @@ $ yarn install
 $ bundle exec rails db:create db:migrate db:seed
 ```
 
-4. Start the Rails server:
+4. Start the web server and the background job processor:
 
 ```sh
 $ bundle exec rails server
+$ bundle exec sidekiq
+```
+
+Streaming game updates to clients goes through background jobs, so Sidekiq is required (otherwise, players need to refresh the page manually).
+
+Alternatively, you can use an application process manager to start both the web server and background job processor. [Foreman](http://blog.daviddollar.org/2011/05/06/introducing-foreman.html) is a good Ruby-based option, but there are many alternatives to suit your needs:
+
+```sh
+$ gem install foreman
+$ foreman start web=1,worker=1
 ```
 
 5. Open a browser to [http://localhost:3000](http://localhost:3000)
