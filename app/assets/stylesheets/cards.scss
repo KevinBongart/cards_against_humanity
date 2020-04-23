@@ -3,7 +3,7 @@
   height: 15em;
   font-weight: bold;
   margin-bottom: 1em;
-
+text-align:left !important;
   &.black {
     color: #fff;
     background-color: #000;
@@ -65,8 +65,17 @@
     text-align: center;
 
     &:hover {
-      background-color: #000;
-      color: #fff;
+      background-color: #343a404f;
+      color: #fff !important;
+      text-decoration:none;
     }
   }
+}
+.card.winner {
+    position: absolute;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    top: 0;
+    right: 0em;
+    left: 14em;
 }

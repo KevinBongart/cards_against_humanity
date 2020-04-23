@@ -5,17 +5,18 @@ $primary: #000;
 @import "games";
 
 body {
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-  max-width: 576px;
-  margin: auto;
+
+
+    color: #5a5a5a;
 }
 
 a:hover {
-  color: #fff;
-  background-color: #000;
+font-weight:bold;
   text-decoration: none;
 }
-
+.nav-item {
+    padding: 0 9px;
+}
 .navbar-brand {
   font-size: 1em;
   font-weight: bold;
@@ -47,4 +48,9 @@ footer {
     border-top: 1px solid $gray-300;
     margin-bottom: 1em;
   }
+}
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: inline-flex;
 }
