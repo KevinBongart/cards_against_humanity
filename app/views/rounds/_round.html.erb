@@ -1,16 +1,13 @@
 <div id="round">
   <% if @round.ended? %>
-    <p>And the winner is…</p>
+    <h2>And the winner is <strong><%= @winning_submission.player %></strong></h2>
 
     <% if @winning_submission %>
-      <div class="card winner">
-        <div class="card-body">
-          <%= formatted_card @winning_submission.card %>
-        </div>
-      </div>
+
 
       <p>
-        Card Czar <%= @round.czar %> chose
+
+        <%= @round.czar %> chose
         <strong><%= @winning_submission.player %></strong>'s
         tasteless card.
 

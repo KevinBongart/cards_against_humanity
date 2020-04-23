@@ -1,23 +1,151 @@
-<%= content_tag :div,
-  id: 'game',
-  class: 'container',
-  data: { controller: :game, slug: @game.slug } do
-%>
-  <div class="row">
-    <div class="col">
-      <%= render 'black_card' %>
+<header>
+  <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">Cards Against Humanity</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav nav  ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#home"  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Game <span class="sr-only">(current)</span></a>
+        </li>
+
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#users" id="users-tab" role="tab" aria-selected="false" aria-controls="users">Users</a>
+        </li>
+        <li class="nav-item">
+<% if @current_player %>
+          <%= link_to 'Sign out',
+            @current_player,
+            method: :delete,
+            class: 'nav-link',
+            data: { confirm: 'Are you sure you want to sign out?' }
+          %>
+        <% end %>
+        </li>
+      </ul>
+
     </div>
-    <div class="col p-0">
-      <%= render 'player_list' %>
+      </div>
+  </nav>
+</header>
+
+    <main role="main">
+      <div class="tab-content p-0" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">          
+          <%= content_tag :div,
+            id: 'game',
+            class: 'container-fluid m-0 p-0',
+            data: { controller: :game, slug: @game.slug } do
+          %>
+    <div class="jumbotron">
+      <div class="container">
+        
+                    <% if @round.black_card %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= render 'black_card' %>
+      
+      
+          <% if @winning_submission %>
+      <div class="card winner">
+        <div class="card-body">
+          <%= formatted_card @winning_submission.card %>
+        </div>
+      </div>
+      <% end %>
+      
+      
+      
+      
+      
+    </div>
+    <div class="col-md-6 text-right">
+        <%= render 'round' %>
+
+        <%= render 'czar_actions' if @current_player == @round.czar %>
+      
+      <% if @round.black_card %>
+
+        <% if @round.status.to_sym.in?(Round::BLACK_CARD_VISIBLE) %>
+          <% if @round.ended? %>
+      
+          <% else %>
+            <%= render 'wait_text_selwin' if @current_player != @round.czar %>
+            <% if @round.submissions.any? %>
+              <% else %> 
+                <%= render 'wait_text_czarwait' if @current_player == @round.czar %>
+      <% end %>
+
+          <% end %>
+
+        <% else %>
+          <%= render 'wait_text_cardwait' if @current_player != @round.czar %>
+        
+        <% end %>
+      <% else %>
+        <%= render 'wait_text_cardwait' if @current_player != @round.czar %>
+        <%= render 'wait_text_czarwait' if @current_player == @round.czar %>
+
+      <% end %>
     </div>
   </div>
-
-  <%= render 'round' %>
+        
+    <% else %>
+  <div class="row">
+    <div class="col-md-6">
+      
+      <%= render 'black_card' %>
+    </div>
+    <div class="col-md-6 text-right">
   <%= render 'czar_actions' if @current_player == @round.czar %>
+      <% if @round.black_card %>
+              <%= render 'wait_text_cardplayed' if @current_player != @round.czar %>
+
+      <% else %>
+ <%= render 'wait_text_waitingforplayed' if @current_player != @round.czar %>
+            <% end %>
+    </div>
+  </div>
+            <% end %>
+        
+        
+        
+        
+
+        </div>
+</div>
+    
+    
+
+<div class="container">
 
   <% if @current_player != @round.czar && !@round.ended? %>
     <%= render 'hand' %>
   <% end %>
 
-  <%= render 'player_actions' %>
 <% end %>
+  </div>
+</div>
+  <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+    <div class="container mt-4">
+
+  <%= render 'player_list' %>
+    </div>
+
+        </div>
+</div>
+    </main>
+
+    <footer class="container small text-muted text-center">
+
+        
+      <p>All creds to <a href="https://github.com/KevinBongart/">Kevin Bongart</a> and the crew behind cards against humanity.</p>
+      <p><%= link_to 'End this round without a winner',
+    end_game_round_path(@game),
+    method: :post,
+    class: '',
+    data: { confirm: 'Are you sure you want to end this round for all players?' }
+  %></p>
+    </footer>
