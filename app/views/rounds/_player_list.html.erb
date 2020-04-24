@@ -6,11 +6,17 @@
           <% if player == @round.czar %>
             <%= image_tag 'crown.png' %>
           <% end %>
-
           <% if @submissions.any? { |s| s.player_id == player.id } %>
             &#10004;
           <% end %>
-
+          <% if player.id != @current_player.id %>
+          <%= link_to 'Kick',
+            player_path(player),
+            method: :delete,
+            class: "float-right",
+            data: { confirm: 'Are you sure you want to kick the user?' }
+          %>
+          <% end %>
           <span class='player-name d-inline-block text-truncate'>
             <%= player %>
           </span>
@@ -25,3 +31,4 @@
     </ul>
   </div>
 <% end %>
+
