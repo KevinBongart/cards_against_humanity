@@ -146,6 +146,10 @@
     <footer class="container small text-muted text-center">
 
         
-      <p>All creds to <a href="https://github.com/KevinBongart/">Kevin Bongart</a> and the crew behind cards against humanity.</p>
-
+      <div class="row"><div class="col-md-6 offset-md-3 ">
+    Invite people to this game:<br>
+<%= text_field("copyurl", "hey",:value=>short_game_url(@game).remove('http://').remove('https://www.'), :class=>"form-control text-center align-center") %>
+</div>
+</div>
+      <p>Creds to the crew behind cards against humanity.</p>
     </footer>
