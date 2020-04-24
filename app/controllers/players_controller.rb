@@ -19,12 +19,16 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:player_token)
-    @current_player.destroy
-
-    redirect_to root_path
+    @player = Player.find(params[:id])
+    @player.destroy
+    broadcast_refresh
+    redirect_to game_round_path(@current_player.game)
+    #redirect_to root_path
   end
-
+  def broadcast_refresh
+    data = { event: :refresh }
+    BroadcastWorker.perform_async(@current_player.game.id, data)
+  end
   def toggle_hand_style
     @current_player.toggle!(:expand_hand)
 
