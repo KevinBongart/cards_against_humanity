@@ -20,10 +20,17 @@ class PlayersController < ApplicationController
 
   def destroy
     @player = Player.find(params[:id])
-    @player.destroy
-    broadcast_refresh
-    redirect_to game_round_path(@current_player.game)
-    #redirect_to root_path
+    
+    if @player.id == @current_player.id
+      @current_player.destroy
+      redirect_to root_path
+
+    else
+      @player.destroy
+      broadcast_refresh
+
+    end
+    #redirect_to game_round_path(@current_player.game)
   end
   def broadcast_refresh
     data = { event: :refresh }

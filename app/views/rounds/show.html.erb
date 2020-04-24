@@ -17,7 +17,7 @@
         <li class="nav-item">
 <% if @current_player %>
           <%= link_to 'Sign out',
-            @current_player,
+            player_path(@current_player),
             method: :delete,
             class: 'nav-link',
             data: { confirm: 'Are you sure you want to sign out?' }
@@ -72,7 +72,12 @@
           <% if @round.ended? %>
       
           <% else %>
-            <%= render 'wait_text_selwin' if @current_player != @round.czar %>
+                <% if @round.playing_black_card? && @submission.blank? %>
+                <%= render 'wait_text_player_pick' if @current_player != @round.czar %>
+                <% else %>
+              <%= render 'wait_text_selwin' if @current_player != @round.czar %>
+
+                <% end %>
             <% if @round.submissions.any? %>
               <% else %> 
                 <%= render 'wait_text_czarwait' if @current_player == @round.czar %>
