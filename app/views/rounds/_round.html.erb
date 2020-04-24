@@ -1,8 +1,9 @@
 <div id="round">
   <% if @round.ended? %>
+      <% if @winning_submission %>
+
     <h2>And the winner is <strong><%= @winning_submission.player %></strong></h2>
 
-    <% if @winning_submission %>
 
 
       <p>
