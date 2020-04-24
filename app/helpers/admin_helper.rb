@@ -6,7 +6,7 @@ module AdminHelper
   end
 
   def lots_of_players?(game)
-    game.max_players >= 8
+    game.max_players >= 18
   end
 
   def lots_of_rounds?(game)

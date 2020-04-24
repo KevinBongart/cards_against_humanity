@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
     <div class="container">
-    <a class="navbar-brand" href="#">Cards Against Humanity</a>
+    <a class="navbar-brand" href="#">Cards Against Folk</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,7 @@
           <a class="nav-link" href="#home"  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Game <span class="sr-only">(current)</span></a>
         </li>
 
-      <li class="nav-item">
+      <li class="nav-item ">
           <a class="nav-link" data-toggle="tab" href="#users" id="users-tab" role="tab" aria-selected="false" aria-controls="users">Users</a>
         </li>
         <li class="nav-item">
@@ -33,7 +33,7 @@
 
     <main role="main">
       <div class="tab-content p-0" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">          
+        <div class="tab-pane fade  show active" id="home" role="tabpanel" aria-labelledby="home-tab">          
           <%= content_tag :div,
             id: 'game',
             class: 'container-fluid m-0 p-0',
@@ -142,10 +142,5 @@
 
         
       <p>All creds to <a href="https://github.com/KevinBongart/">Kevin Bongart</a> and the crew behind cards against humanity.</p>
-      <p><%= link_to 'End this round without a winner',
-    end_game_round_path(@game),
-    method: :post,
-    class: '',
-    data: { confirm: 'Are you sure you want to end this round for all players?' }
-  %></p>
+
     </footer>

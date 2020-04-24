@@ -30,7 +30,12 @@ class RoundsController < ApplicationController
 
     redirect_to game_round_path(@game)
   end
+  def destroy
+    cookies.delete(:player_token)
+    @current_player.destroy
 
+    redirect_to root_path
+  end
   # POST /games/1/round/advance
   def advance
     case @round.status.to_sym

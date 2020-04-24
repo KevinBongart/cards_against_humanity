@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_04_12_172021) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "card_games", force: :cascade do |t|
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_172021) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "max_players", default: 0, null: false
+    t.bigint "creatorid"
     t.index ["slug"], name: "index_games_on_slug", unique: true
   end
 

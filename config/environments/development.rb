@@ -13,6 +13,19 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+  config.web_console.whitelisted_ips = '192.168.20.0/16'
+#  config.action_cable.url = 'wss:cardsagainst.carlmartin.no/cable'
+# config.web_socket_server_url = "wss://cardsagainst.carlmartin.no/cable"
+  config.action_cable.allowed_request_origins = ['*']
+  config.action_cable.disable_request_forgery_protection = true
+
+  config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+  }
+  config.hosts << "cardsagainst.carlmartin.no"
+  config.hosts << "portal.spikup.no"
+
+
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

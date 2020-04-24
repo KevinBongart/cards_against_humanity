@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md  navbar-dark bg-dark">
     <div class="container">
-    <a class="navbar-brand" href="#">Cards Against Humanity</a>
+    <a class="navbar-brand" href="#">Cards Against Folk</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,7 +24,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 mb-4">
-            <h2>Welcome to CAH</h2>
+            <h2>Welcome to kort mot folk</h2>
   <p>
     An unofficial online version of the
     <a href="https://cardsagainsthumanity.com">Cards Against Humanity</a>
@@ -42,6 +42,7 @@
     <% end %>
   <% end %>
               <%= form_with model: @game do |form| %>
+            
     <%= form.submit 'Start a new game',
       class: 'btn btn-primary btn-block'
     %>

@@ -14,15 +14,17 @@ class GamesController < ApplicationController
   def create
     params = game_params
     params.merge!(players: [@current_player]) if @current_player
+    params.merge(creatorid: @current_player)
 
     options = params.delete(:options).select(&:present?).map do |option|
       Option.new(code: option)
     end
 
     params.merge!(options: options) if options.any?
+logger.info(options)
 
     @game = Game.new(params)
-
+logger.info(params)
     if @game.save && @game.setup
       redirect_to @game
     else
@@ -55,12 +57,15 @@ class GamesController < ApplicationController
 
   def set_game
     @game = Game.find_by(slug: params[:id])
-
+    if @game.creatorid != ""
+    @game.update_attribute(:creatorid, @current_player.id) 
+    @game.save
+    end
     redirect_to root_path if @game.blank?
   end
 
   # Only allow a list of trusted parameters through.
   def game_params
-    params.require(:game).permit(:slug, options: [])
+    params.require(:game).permit(:creatorid, :slug, options: [])
   end
 end

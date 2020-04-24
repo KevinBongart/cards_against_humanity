@@ -64,7 +64,14 @@ class Game < ApplicationRecord
       used_cards.push(new_cards)
     end
   end
+  def destroy
+    @player = Player.find(params[:id])
+    @player.destroy
+    broadcast_refresh
 
+    #redirect_to root_path
+  end
+  
   def next_czar(offset: 0)
     # If the czar signs out!
     return players.not_rando.first if current_round.czar.blank?

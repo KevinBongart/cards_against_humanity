@@ -1,15 +1,16 @@
-<h2>
+<h4>Please select a black card.</h4>
+<p>You can also draw a new card by clicking "Skip this card"</p>
+
+<div class="btn-group" role="group" aria-label="Basic example">
   <%= button_to 'Play this card',
     advance_game_round_path(@game),
-    class: 'btn btn-primary btn-lg btn-block'
+    class: 'btn btn-primary'
   %>
-</h2>
 
-<p>
-  or
 
-  <%= link_to 'skip this card',
+  <%= link_to 'Skip this card',
     skip_black_card_game_round_path(@game),
+    class: 'btn btn-info ',
     method: :post
-  %>.
-</p>
+  %>
+</div>

@@ -9,6 +9,7 @@
           <% if @submissions.any? { |s| s.player_id == player.id } %>
             &#10004;
           <% end %>
+          <% if @game.creatorid == @current_player.id %>
           <% if player.id != @current_player.id %>
           <%= link_to 'Kick',
             player_path(player),
@@ -16,6 +17,7 @@
             class: "float-right",
             data: { confirm: 'Are you sure you want to kick the user?' }
           %>
+          <% end %>
           <% end %>
           <span class='player-name d-inline-block text-truncate'>
             <%= player %>
@@ -29,6 +31,12 @@
         </li>
       <% end %>
     </ul>
+          <p><%= link_to 'End this round without a winner',
+    end_game_round_path(@game),
+    method: :post,
+    class: '',
+    data: { confirm: 'Are you sure you want to end this round for all players?' }
+  %></p>
   </div>
 <% end %>
 
