@@ -2,7 +2,7 @@
 
 An unofficial online version of the Cards Against Humanity game. Pairs well with friends, booze and video chat.
 
-[Click here to play](https://www.cardsagainsthumanity.online).
+[Click here to play](https://www.cardiganshumility.online).
 
 Put together by [Kevin Bongart](http://kevinbongart.net) so he could play his beloved game with friends during tough times. Not affiliated with the official [Cards Against Humanity](https://cardsagainsthumanity.com/) company, but you should absolutely [buy their game](https://store.cardsagainsthumanity.com/) because it's a lot more fun in person. Remixed under [Creative Commons BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/).
 
