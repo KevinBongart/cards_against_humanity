@@ -197,7 +197,7 @@ GEM
     redis (4.2.1)
     regexp_parser (1.7.0)
     rexml (3.2.4)
-    rollbar (2.25.0)
+    rollbar (2.27.0)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
