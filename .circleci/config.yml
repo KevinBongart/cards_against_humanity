@@ -24,5 +24,5 @@ jobs:
           command: 'yarn install --frozen-lockfile'
       - run:
           name: Set up database
-          command: 'bundle exec rails db:schema:load --trace'
+          command: 'bundle exec rails db:create db:schema:load --trace'
       - ruby/rspec-test
