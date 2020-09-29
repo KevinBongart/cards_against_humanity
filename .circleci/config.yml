@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@0.2.1
+  ruby: circleci/ruby@1.1.1
 
 jobs:
   build:
@@ -32,7 +32,5 @@ jobs:
       - ruby/save-cache
       - run:
           name: Set up database
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:schema:load
-      - ruby/run-tests
+          command: 'bundle exec rails db:schema:load --trace'
+      - ruby/rspec-test
