@@ -1,13 +1,13 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.1.1
+  ruby: circleci/ruby@1.1.1 # https://circleci.com/orbs/registry/orb/circleci/ruby
+  node: circleci/node@4.0.1 # https://circleci.com/orbs/registry/orb/circleci/node
 
 jobs:
   build:
     docker:
       - image: circleci/ruby:2.7.1-node
         environment:
-          BUNDLER_VERSION: 2.1.4
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
@@ -18,18 +18,14 @@ jobs:
       - image: redis
     executor: ruby/default
     steps:
-      - run:
-          name: Update Bundler
-          command: |
-            gem install bundler:$BUNDLER_VERSION
       - checkout
-      - ruby/load-cache
       - ruby/install-deps
+      - node/install-packages:
+          cache-key: yarn.lock
+          pkg-manager: yarn
       - run:
-          name: Install Yarn dependencies
-          command: |
-            yarn install --frozen-lockfile
-      - ruby/save-cache
+          name: Wait for DB
+          command: 'dockerize -wait tcp://localhost:5432 -timeout 1m'
       - run:
           name: Set up database
           command: 'bundle exec rails db:schema:load --trace'
