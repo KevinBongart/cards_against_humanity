@@ -6,15 +6,15 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:latest-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-      - image: circleci/postgres:10.5-alpine
+      - image: circleci/postgres:latest
         environment:
+          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: ""
       - image: redis
     executor: ruby/default
     steps:
