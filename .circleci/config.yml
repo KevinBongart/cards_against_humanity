@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.1 # https://circleci.com/orbs/registry/orb/circleci/ruby
+  node: circleci/node@4.0.1 # https://circleci.com/orbs/registry/orb/circleci/node
 
 jobs:
   build:
@@ -19,9 +20,11 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          name: Install Yarn dependencies
-          command: 'yarn install --frozen-lockfile'
+          name: Wait for DB
+          command: 'dockerize -wait tcp://localhost:5432 -timeout 1m'
       - run:
           name: Set up database
           command: 'bundle exec rails db:create db:schema:load --trace'
