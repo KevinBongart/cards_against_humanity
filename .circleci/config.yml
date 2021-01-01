@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7-node-browsers
+      - image: circleci/ruby:latest-node-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: postgres
