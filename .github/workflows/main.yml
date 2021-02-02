@@ -13,10 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Dokku deploy
-      uses: vitalyliber/dokku-github-action@v6.0
+      uses: KevinBongart/dokku-github-action
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         HOST: dokku.kevinbongart.net
         PROJECT: cards
         BRANCH: main
+        DOKKU_BRANCH: main
