@@ -12,10 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Push to dokku
-      uses: dokku/github-action@master
-      with:
-        # specify the `main` branch as the remote branch to push to
-        branch: 'main'
-        git_remote_url: 'ssh://dokku@@dokku.kevinbongart.net:22/cards'
-        ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+    - name: Dokku deploy
+      uses: vitalyliber/dokku-github-action@v6.0
+      env:
+        PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        HOST: dokku.kevinbongart.net
+        PROJECT: cards
+        BRANCH: main
