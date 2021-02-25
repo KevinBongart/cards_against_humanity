@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Dokku deploy
-      uses: KevinBongart/dokku-github-action@v6.2
+      uses: KevinBongart/dokku-github-action@main
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         HOST: dokku.kevinbongart.net
