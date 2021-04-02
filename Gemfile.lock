@@ -141,7 +141,7 @@ GEM
     parser (3.0.0.0)
       ast (~> 2.4.1)
     pg (1.2.3)
-    pg_query (2.0.1)
+    pg_query (2.0.2)
       google-protobuf (~> 3.15.5)
     pghero (2.8.1)
       activerecord (>= 5)
