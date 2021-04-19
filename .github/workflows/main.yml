@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Enqueuing deployment
+        uses: softprops/turnstyle@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Push to dokku
         uses: dokku/github-action@v1.0.2
         with:
