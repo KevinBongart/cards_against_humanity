@@ -111,7 +111,7 @@ GEM
     globalid (0.5.2)
       activesupport (>= 5.0)
     google-protobuf (3.19.1)
-    i18n (1.8.11)
+    i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
@@ -131,7 +131,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
-    minitest (5.14.4)
+    minitest (5.15.0)
     msgpack (1.4.2)
     newrelic_rpm (8.2.0)
     nio4r (2.5.8)
@@ -145,7 +145,7 @@ GEM
     pg (1.2.3)
     pg_query (2.1.2)
       google-protobuf (>= 3.17.1)
-    pghero (2.8.1)
+    pghero (2.8.2)
       activerecord (>= 5)
     popper_js (1.16.0)
     pry (0.13.1)
@@ -291,7 +291,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   ruby
