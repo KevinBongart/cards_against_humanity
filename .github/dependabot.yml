@@ -6,13 +6,6 @@ updates:
     interval: daily
     time: "10:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: flipper-ui
-    versions:
-    - 0.20.4
-  - dependency-name: rspec-rails
-    versions:
-    - 4.1.0
 - package-ecosystem: npm
   directory: "/"
   schedule:
