@@ -11,7 +11,7 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-      - image: cimg/postgres:latest
+      - image: cimg/postgres:14.2
         environment:
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: postgres
