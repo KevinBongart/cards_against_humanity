@@ -1,17 +1,17 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.1.2 # https://circleci.com/orbs/registry/orb/circleci/ruby
-  node: circleci/node@4.1.0 # https://circleci.com/orbs/registry/orb/circleci/node
+  ruby: circleci/ruby@1.7.1 # https://circleci.com/orbs/registry/orb/circleci/ruby
+  node: circleci/node@5.0.2 # https://circleci.com/orbs/registry/orb/circleci/node
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:latest-node-browsers
+      - image: cimg/ruby:3.1.2-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: postgres
           RAILS_ENV: test
-      - image: circleci/postgres:latest
+      - image: cimg/postgres:14.2
         environment:
           POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: postgres
