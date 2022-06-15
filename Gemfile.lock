@@ -134,7 +134,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.15.0)
+    minitest (5.16.0)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -177,7 +177,7 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-protection (2.2.0)
       rack
     rack-proxy (0.7.0)
@@ -220,7 +220,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.6.0)
-    regexp_parser (2.4.0)
+    regexp_parser (2.5.0)
     rexml (3.2.5)
     rollbar (3.3.0)
     rspec-core (3.11.0)
@@ -251,9 +251,9 @@ GEM
       rubocop-ast (>= 1.17.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.17.0)
+    rubocop-ast (1.18.0)
       parser (>= 3.1.1.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -313,7 +313,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.4)
+    zeitwerk (2.6.0)
 
 PLATFORMS
   ruby
