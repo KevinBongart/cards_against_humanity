@@ -6,7 +6,7 @@
     "@rails/activestorage": "^7.0.3",
     "@rails/ujs": "^7.0.3",
     "@rails/webpacker": "5.4.3",
-    "stimulus": "^3.0.1",
+    "stimulus": "^3.1.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
