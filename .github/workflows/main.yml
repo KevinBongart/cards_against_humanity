@@ -21,7 +21,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push to dokku
-        uses: dokku/github-action@v1.0.2
+        uses: dokku/github-action@v1.1.2
         with:
           # specify the `main` branch as the remote branch to push to
           branch: 'main'
