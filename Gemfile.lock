@@ -100,7 +100,7 @@ GEM
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.15.5)
-    flipper (0.25.0)
+    flipper (0.25.1)
     flipper-redis (0.25.0)
       flipper (~> 0.25.0)
       redis (>= 3.0, < 5)
