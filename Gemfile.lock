@@ -274,7 +274,7 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
-    sidekiq (6.5.4)
+    sidekiq (6.5.5)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.5.0)
