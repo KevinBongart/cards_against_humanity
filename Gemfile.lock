@@ -112,7 +112,7 @@ GEM
       sanitize (< 7)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    google-protobuf (3.19.4)
+    google-protobuf (3.21.7)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
