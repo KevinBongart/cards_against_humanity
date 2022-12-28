@@ -341,7 +341,7 @@ DEPENDENCIES
   puma (~> 6.0)
   rails (~> 6.1.7)
   rails_real_favicon
-  redis
+  redis (< 5)
   rollbar
   rspec-rails
   rspec_junit_formatter

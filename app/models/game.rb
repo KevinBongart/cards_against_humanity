@@ -81,7 +81,7 @@ class Game < ApplicationRecord
   end
 
   def broadcast_refresh
-    data = { event: :refresh }
+    data = { event: :refresh }.to_json
     BroadcastWorker.perform_async(id, data)
   end
 
