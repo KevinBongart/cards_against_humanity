@@ -144,7 +144,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.2)
+    net-smtp (0.3.3)
       net-protocol
     newrelic_rpm (8.14.0)
     nio4r (2.5.8)
