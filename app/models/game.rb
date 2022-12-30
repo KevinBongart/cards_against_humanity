@@ -82,7 +82,7 @@ class Game < ApplicationRecord
 
   def broadcast_refresh
     data = { event: :refresh }
-    BroadcastWorker.perform_async(id, data)
+    BroadcastWorker.perform_async({ game_id: id, data: data }.stringify_keys)
   end
 
   def mc_czar_option?
