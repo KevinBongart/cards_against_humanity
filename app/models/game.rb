@@ -81,8 +81,7 @@ class Game < ApplicationRecord
   end
 
   def broadcast_refresh
-    data = { event: :refresh }
-    BroadcastWorker.perform_async({ game_id: id, data: data }.stringify_keys)
+    BroadcastWorker.perform_async({ 'game_id' => id, 'event' => 'refresh' })
   end
 
   def mc_czar_option?
