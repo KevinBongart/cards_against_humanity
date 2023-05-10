@@ -40,6 +40,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - add_ssh_keys
       - checkout
       - run:
           name: Deploy to Dokku
@@ -48,10 +49,10 @@ jobs:
 workflows:
   build-and-deploy:
     jobs:
-      - build
+      # - build
       - deploy:
-          requires:
-            - build
+          # requires:
+          #   - build
           filters:
             branches:
               only:
