@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Flipper.configure do |config|
   config.default do
     client = Redis.new
