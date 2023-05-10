@@ -28,4 +28,7 @@ jobs:
       - run:
           name: Set up database
           command: 'bundle exec rails db:create db:schema:load --trace'
+      - run:
+          name: Precompile assets
+          command: 'bundle exec rails assets:precompile --trace'
       - ruby/rspec-test
