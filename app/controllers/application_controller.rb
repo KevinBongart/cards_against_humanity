@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    return unless @current_player.blank?
+    return if @current_player.present?
 
     cookies.delete(:player_token)
     session[:return_path] = request.path
