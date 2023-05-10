@@ -45,10 +45,10 @@ jobs:
       - checkout
       - run:
           name: Add Dokku git remote
-          command: git remote add dokku ssh://dokku@dokku.kevinbongart.net:cards
+          command: git remote add dokku dokku@dokku.kevinbongart.net:cards
       - run:
           name: Deploy to Dokku
-          command: git push dokku
+          command: git push dokku main
 
 workflows:
   build-and-deploy:
