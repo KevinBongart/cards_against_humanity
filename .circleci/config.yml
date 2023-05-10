@@ -41,6 +41,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - add_ssh_keys
+      - run: ssh-keyscan dokku.kevinbongart.net >> ~/.ssh/known_hosts
       - checkout
       - run:
           name: Add Dokku git remote
