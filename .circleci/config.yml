@@ -41,8 +41,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - add_ssh_keys
-      - run: ssh-keyscan dokku.kevinbongart.net >> ~/.ssh/known_hosts
       - checkout
+      - run:
+          name: Add git remote host to know hosts
+          command: ssh-keyscan dokku.kevinbongart.net >> ~/.ssh/known_hosts
       - run:
           name: Add Dokku git remote
           command: git remote add dokku dokku@dokku.kevinbongart.net:cards
@@ -53,10 +55,10 @@ jobs:
 workflows:
   build-and-deploy:
     jobs:
-      # - build
+      - build
       - deploy:
-          # requires:
-          #   - build
+          requires:
+            - build
           filters:
             branches:
               only:
