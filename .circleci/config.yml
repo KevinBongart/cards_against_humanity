@@ -38,7 +38,7 @@ jobs:
       - ruby/rspec-test
   deploy:
     docker:
-      - image: cimg/base
+      - image: cimg/base:stable
     steps:
       - checkout
       - run: git remote add production dokku@dokku.kevinbongart.net:cards
