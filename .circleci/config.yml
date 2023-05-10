@@ -43,8 +43,11 @@ jobs:
       - add_ssh_keys
       - checkout
       - run:
+          name: Add Dokku git remote
+          command: git remote add dokku ssh://dokku@dokku.kevinbongart.net:cards
+      - run:
           name: Deploy to Dokku
-          command: git push dokku@dokku.kevinbongart.net:cards main
+          command: git push dokku
 
 workflows:
   build-and-deploy:
