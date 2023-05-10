@@ -20,6 +20,10 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
+      - node/install:
+          install-yarn: true
+          node-version: '16.20'
+      - run: node --version
       - node/install-packages:
           pkg-manager: yarn
       - run:
