@@ -41,8 +41,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: git remote add production dokku@dokku.kevinbongart.net:cards
-      - run: git push production main
+      - run:
+          name: Deploy to Dokku
+          command: git push dokku@dokku.kevinbongart.net:cards main
 
 workflows:
   build-and-deploy:
