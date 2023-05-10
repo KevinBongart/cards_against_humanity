@@ -16,12 +16,17 @@ AllCops:
     - "tmp/**/*"
     - "vendor/**/*"
     - Rakefile
+    - db/seeds.rb
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case

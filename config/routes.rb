@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  require "sidekiq/web"
+  require 'sidekiq/web'
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     username == ENV.fetch('HTTP_BASIC_USERNAME') && password == ENV.fetch('HTTP_BASIC_PASSWORD')
   end
-  mount Sidekiq::Web, at: "/sidekiq"
+  mount Sidekiq::Web, at: '/sidekiq'
 
   flipper_app = Flipper::UI.app(Flipper.instance) do |builder|
     builder.use Rack::Auth::Basic do |username, password|

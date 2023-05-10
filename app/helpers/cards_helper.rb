@@ -33,12 +33,12 @@ module CardsHelper
   def expanded_hand_style(card)
     # Move the card up to 5 pixels left or right
     max_random_y = 10
-    random_int = (card.id) % (max_random_y + 1)
+    random_int = card.id % (max_random_y + 1)
     randomized_y = random_int - (max_random_y / 2.0)
 
     # Add or remove 1 degree to the angle
     max_random_angle = 2
-    random_int = (card.id) % (max_random_angle + 1)
+    random_int = card.id % (max_random_angle + 1)
     randomized_angle = random_int - max_random_angle / 2.0
 
     styles = {

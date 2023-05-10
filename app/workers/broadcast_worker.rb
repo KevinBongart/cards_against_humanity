@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BroadcastWorker
   include Sidekiq::Worker
 
