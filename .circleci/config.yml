@@ -36,3 +36,9 @@ jobs:
           name: Precompile assets
           command: 'bundle exec rails assets:precompile --trace'
       - ruby/rspec-test
+  deploy:
+    production:
+      branch: main
+      commands:
+        - git remote add production dokku@dokku.kevinbongart.net:cards
+        - git push production main
