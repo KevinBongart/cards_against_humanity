@@ -12,7 +12,7 @@
     "@rails/webpacker": "5.4.4",
     "stimulus": "^3.2.1",
     "turbolinks": "^5.2.0",
-    "webpack": "^4.46.0"
+    "webpack": "^5.83.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^4.15.0"
