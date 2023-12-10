@@ -146,7 +146,7 @@ GEM
     mini_portile2 (2.8.4)
     minitest (5.18.0)
     msgpack (1.6.0)
-    net-imap (0.3.6)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -301,7 +301,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.2.2)
     tilt (2.0.11)
-    timeout (0.3.2)
+    timeout (0.4.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
