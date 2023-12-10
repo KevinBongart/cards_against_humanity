@@ -6,7 +6,7 @@
     "node": "16.x"
   },
   "dependencies": {
-    "@rails/actioncable": "^7.0.5",
+    "@rails/actioncable": "^7.0.8",
     "@rails/activestorage": "^7.0.5",
     "@rails/ujs": "^7.0.8",
     "@rails/webpacker": "5.4.4",
