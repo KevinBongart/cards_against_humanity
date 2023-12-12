@@ -98,7 +98,7 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
-    date (3.3.3)
+    date (3.3.4)
     diff-lcs (1.5.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -148,12 +148,12 @@ GEM
     mini_portile2 (2.8.4)
     minitest (5.20.0)
     msgpack (1.6.0)
-    net-imap (0.3.7)
+    net-imap (0.4.8)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.3.3)
       net-protocol
@@ -306,7 +306,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.2.2)
     tilt (2.0.11)
-    timeout (0.4.0)
+    timeout (0.4.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
