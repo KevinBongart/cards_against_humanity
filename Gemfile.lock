@@ -146,7 +146,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.5)
-    minitest (5.21.1)
+    minitest (5.22.2)
     msgpack (1.7.2)
     net-imap (0.4.9.1)
       date
@@ -169,7 +169,7 @@ GEM
     pg (1.5.4)
     pg_query (5.1.0)
       google-protobuf (>= 3.22.3)
-    pghero (3.4.0)
+    pghero (3.4.1)
       activerecord (>= 6)
     popper_js (1.16.1)
     pry (0.14.2)
